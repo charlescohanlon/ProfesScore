@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import SearchHome from "../components/SearchHome";
+import SearchHome from "../components/Search/SearchHome";
 
 import { useState } from "react";
 

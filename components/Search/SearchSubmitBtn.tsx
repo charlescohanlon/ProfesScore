@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-
 const SearchSubmitBtn: FC = (): JSX.Element => {
   return (
     <button
@@ -8,9 +7,9 @@ const SearchSubmitBtn: FC = (): JSX.Element => {
         " hover:bg-white hover:text-brandAmber text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
       }
     >
-      Search
+      {" "}
+      Search{" "}
     </button>
   );
 };
-
 export default SearchSubmitBtn;
