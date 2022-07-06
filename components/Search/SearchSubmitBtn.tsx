@@ -1,15 +1,14 @@
 import React, { FC } from "react";
 const SearchSubmitBtn: FC = (): JSX.Element => {
   return (
-    <button
+    <input
+      type="button"
+      value="Search"
       className={
-        "w-fit px-5 py-2 border border-white rounded-full bg-brandAmber text-white" +
+        "px-10 py-1 border-2 border-white rounded-full bg-brandAmber text-white font-bold" +
         " hover:bg-white hover:text-brandAmber text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
       }
-    >
-      {" "}
-      Search{" "}
-    </button>
+    />
   );
 };
 export default SearchSubmitBtn;

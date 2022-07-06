@@ -55,7 +55,7 @@ const SearchSlider: FC<SliderProps> = ({
   const topSliderRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="flex justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5">
+    <div className="w-full flex justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5">
       <SearchSliderInput
         defaultVal={1}
         inputRef={leftInputRef}

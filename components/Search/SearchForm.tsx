@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import SearchBar from "./SearchBar";
 import SearchGenericInput from "./SearchGenericInput";
 import SearchSlider from "./SearchSlider";
+import SearchSubmitBtn from "./SearchSubmitBtn";
 
 interface SearchFormProps {
   searchType: string;
@@ -31,10 +32,13 @@ const SearchForm: FC<SearchFormProps> = ({
   );
 
   const RatingForm: JSX.Element = (
-    <SearchSlider
-      sliderVals={sliderVals}
-      updateSliderVals={updateSliderVals}
-    ></SearchSlider>
+    <div className="grid grid-rows-2 justify-items-center gap-3 sm:gap-4 md:gap-5 lg:gap-7 xl:gap-8">
+      <SearchSlider
+        sliderVals={sliderVals}
+        updateSliderVals={updateSliderVals}
+      ></SearchSlider>
+      <SearchSubmitBtn></SearchSubmitBtn>
+    </div>
   );
 
   return (
