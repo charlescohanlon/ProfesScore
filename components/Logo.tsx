@@ -2,10 +2,10 @@ import React, { FC } from "react";
 
 const Logo: FC = () => {
   return (
-    <div className="flex items-center gap-x-2 xs:gap-x-3 sm:gap-x-4 md:gap-x-5 lg:gap-x-6 xl:gap-x-7">
-      {/* Cap Logo */}
-      <svg
-        className="text-brandAmber h-10 xs:h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28"
+    <div className="flex">
+      <svg // Cap logo
+        className="text-brandAmber w-2/12"
+        style={{ margin: "0 1% 0 0" }} // override tailwind for % margins
         xmlns="http://www.w3.org/2000/svg"
         version="1.0"
         viewBox="0 0 5233 5804"
@@ -17,9 +17,9 @@ const Logo: FC = () => {
           <path d="M46475 5164 c-16 -2 -73 -9 -125 -15 -396 -45 -828 -212 -1164 -452 -516 -367 -869 -885 -1020 -1497 -48 -196 -65 -323 -73 -530 -24 -700 233 -1369 718 -1874 404 -421 910 -681 1499 -773 163 -25 577 -25 740 1 147 23 388 84 516 131 141 51 401 182 524 264 305 201 587 489 778 792 433 687 514 1556 216 2319 -122 313 -310 603 -549 849 -406 418 -900 672 -1490 766 -95 15 -500 29 -570 19z" />
         </g>
       </svg>
-      {/* Text Logo */}
-      <svg
-        className="w-fit text-brandGray h-10 xs:h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28"
+      <svg // Text logo
+        className="text-brandGray w-10/12"
+        style={{ margin: "0 0 0 1%" }}
         xmlns="http://www.w3.org/2000/svg"
         version="1.0"
         viewBox="0 0 5478 1230"

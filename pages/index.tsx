@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import SearchHome from "../components/SearchHome";
+import SearchHome from "../components/Search/SearchHome";
 
 import { useState } from "react";
 
@@ -28,18 +27,17 @@ const Home: NextPage = () => {
     setSearchState(stateCopy);
   }
 
-  const { selectedOption, sliderValues } = searchState;
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>ProfesScore</title>
       </Head>
 
       <main className="h-screen w-screen flex justify-center bg-white">
         <SearchHome
-          selectedOption={selectedOption}
+          selectedOption={searchState.selectedOption}
           updateSelectedOption={updateSelectedOption}
-          sliderVals={sliderValues}
+          sliderVals={searchState.sliderValues}
           updateSliderVals={updateSliderVal}
         ></SearchHome>
       </main>
