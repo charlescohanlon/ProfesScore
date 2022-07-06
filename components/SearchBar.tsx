@@ -26,7 +26,10 @@ const SearchBar: FC<SearchBarProps> = ({ placeholderText }) => {
       <input
         type="text"
         placeholder={placeholderText}
-        className="w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
+        className={
+          "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white" +
+          " focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
+        }
       />
     </div>
   );

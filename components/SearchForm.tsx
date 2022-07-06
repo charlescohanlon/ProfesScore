@@ -37,18 +37,15 @@ const SearchForm: FC<SearchFormProps> = ({
     ></SearchSlider>
   );
 
-  let form: JSX.Element;
-  switch (searchType) {
-    case "Professor":
-      form = ProfessorForm;
-      break;
-    case "Course":
-      form = CourseForm;
-      break;
-    default:
-      form = RatingForm;
-  }
-  return <div className="p-4 sm:p-8 md:p-9 lg:p-10">{form}</div>;
+  return (
+    <div className="p-4 sm:p-8 md:p-9 lg:p-10">
+      {searchType == "Professor"
+        ? ProfessorForm
+        : searchType == "Course"
+        ? CourseForm
+        : RatingForm}
+    </div>
+  );
 };
 
 export default SearchForm;

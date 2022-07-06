@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import SearchForm from "./SearchForm";
 import SearchTypeTab from "./SearchTypeTab";
-import Logo from "../components/Logo";
+import Logo from "./Logo";
 
 interface SearchHomeProps {
   selectedOption: string;

@@ -22,7 +22,8 @@ const SearchSliderInput: FC<SearchGenericInputProps> = ({
       }
       defaultValue={defaultVal}
       className={
-        "w-10 sm:w-14 lg:w-20 py-2 rounded-full font-Barlow text-brandGray bg-white text-center hover:shadow-inputShadow focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
+        "w-10 sm:w-14 lg:w-20 py-2 rounded-full font-Barlow text-brandGray bg-white text-center" +
+        " hover:shadow-inputShadow focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
       }
     />
   );
