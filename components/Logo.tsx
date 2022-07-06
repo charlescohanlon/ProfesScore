@@ -4,7 +4,7 @@ const Logo: FC = () => {
   return (
     <div className="flex">
       <svg // Cap logo
-        className="text-brandAmber w-2/12"
+        className="text-brandAmber w-1/6"
         style={{ margin: "0 1% 0 0" }} // override tailwind for % margins
         xmlns="http://www.w3.org/2000/svg"
         version="1.0"
@@ -18,7 +18,7 @@ const Logo: FC = () => {
         </g>
       </svg>
       <svg // Text logo
-        className="text-brandGray w-10/12"
+        className="text-brandGray w-5/6"
         style={{ margin: "0 0 0 1%" }}
         xmlns="http://www.w3.org/2000/svg"
         version="1.0"

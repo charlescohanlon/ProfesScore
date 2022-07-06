@@ -33,7 +33,7 @@ const Home: NextPage = () => {
         <title>ProfesScore</title>
       </Head>
 
-      <main className="h-screen w-screen flex justify-center bg-white">
+      <main className="h-screen w-screen flex flex-col items-center bg-white">
         <SearchHome
           selectedOption={searchState.selectedOption}
           updateSelectedOption={updateSelectedOption}

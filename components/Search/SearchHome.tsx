@@ -16,14 +16,13 @@ const SearchHome: FC<SearchHomeProps> = ({
   sliderVals,
   updateSliderVals,
 }): JSX.Element => {
-  const searchOptions = ["Professor", "Course", "Rating"];
   return (
     <div className="relative top-1/4 h-fit w-10/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12">
-      <div className="mb-5 flex justify-center">
+      <div className="m-5">
         <Logo></Logo>
       </div>
       <div className="flex">
-        {searchOptions.map((option) => (
+        {["Professor", "Course", "Rating"].map((option) => (
           <SearchTypeTab
             key={option}
             typeText={option}
