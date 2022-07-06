@@ -15,10 +15,8 @@ const SearchSliderInput: FC<SearchGenericInputProps> = ({
     <input
       ref={inputRef}
       type="text"
-      onKeyDown={({ key, currentTarget }) =>
-        key === "Enter"
-          ? (outputRef.current!.value = currentTarget.value)
-          : null
+      onKeyDown={({ key, currentTarget: { value } }) =>
+        key === "Enter" ? (outputRef.current!.value = value) : null
       }
       defaultValue={defaultVal}
       className={

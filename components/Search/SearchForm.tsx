@@ -10,6 +10,10 @@ interface SearchFormProps {
   updateSliderVals: Function;
 }
 
+function submitQuery() {
+  console.log("Query submitted");
+}
+
 const SearchForm: FC<SearchFormProps> = ({
   searchType,
   sliderVals,
@@ -17,17 +21,29 @@ const SearchForm: FC<SearchFormProps> = ({
 }): JSX.Element => {
   const ProfessorForm: JSX.Element = (
     <div className="flex justify-center">
-      <SearchBar placeholderText="Professor Name"></SearchBar>
+      <SearchBar
+        placeholderText="Professor Name"
+        submitFunc={submitQuery}
+      ></SearchBar>
     </div>
   );
 
   const CourseForm: JSX.Element = (
     <div className="grid grid-rows-2 grid-cols-2 justify-items-center gap-3 sm:gap-4 md:gap-5 lg:gap-7 xl:gap-8">
       <div className="w-full col-span-full ">
-        <SearchBar placeholderText="Course Title"></SearchBar>
+        <SearchBar
+          placeholderText="Course Title"
+          submitFunc={submitQuery}
+        ></SearchBar>
       </div>
-      <SearchGenericInput placeholderText="Subject (optional)"></SearchGenericInput>
-      <SearchGenericInput placeholderText="Professor (optional)"></SearchGenericInput>
+      <SearchGenericInput
+        placeholderText="Subject (optional)"
+        submitFunc={submitQuery}
+      ></SearchGenericInput>
+      <SearchGenericInput
+        placeholderText="Professor (optional)"
+        submitFunc={submitQuery}
+      ></SearchGenericInput>
     </div>
   );
 
@@ -37,7 +53,7 @@ const SearchForm: FC<SearchFormProps> = ({
         sliderVals={sliderVals}
         updateSliderVals={updateSliderVals}
       ></SearchSlider>
-      <SearchSubmitBtn></SearchSubmitBtn>
+      <SearchSubmitBtn submitFunc={submitQuery}></SearchSubmitBtn>
     </div>
   );
 

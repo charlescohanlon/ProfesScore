@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import React, { FC, useRef } from "react";
 import SearchSliderInput from "./SearchSliderInput";
 
