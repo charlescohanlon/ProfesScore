@@ -6,8 +6,8 @@ import SearchSubmitBtn from "./SearchSubmitBtn";
 
 interface SearchFormProps {
   searchType: string;
-  sliderVals: [number, number];
-  updateSliderVals: Function;
+  sliderVals: [string, string];
+  updateSliderVals: [Function, Function];
 }
 
 function submitQuery() {
@@ -53,18 +53,18 @@ const SearchForm: FC<SearchFormProps> = ({
         sliderVals={sliderVals}
         updateSliderVals={updateSliderVals}
       ></SearchSlider>
-      <SearchSubmitBtn submitFunc={submitQuery}></SearchSubmitBtn>
+      <SearchSubmitBtn  submitFunc={submitQuery}></SearchSubmitBtn>
     </div>
   );
 
   return (
-    <div className="p-4 sm:p-8 md:p-9 lg:p-10">
+    <>
       {searchType == "Professor"
         ? ProfessorForm
         : searchType == "Course"
         ? CourseForm
         : RatingForm}
-    </div>
+    </>
   );
 };
 

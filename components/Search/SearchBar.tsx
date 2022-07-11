@@ -28,8 +28,8 @@ const SearchBar: FC<SearchBarProps> = ({ placeholderText, submitFunc }) => {
         type="text"
         placeholder={placeholderText}
         className={
-          "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white" +
-          " focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
+          "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white " +
+          "focus:outline-none text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
         }
         onKeyDown={({ key }) => {
           key === "Enter" ? submitFunc() : null;

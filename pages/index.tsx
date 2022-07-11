@@ -2,17 +2,19 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import SearchHome from "../components/Search/SearchHome";
 
+import ViewResults from "./search"; // for dev purposes
+
 import { useState } from "react";
 
-interface searchState {
+export interface SearchState {
   selectedOption: string;
-  sliderValues: [number, number];
+  sliderValues: [string, string];
 }
 
 const Home: NextPage = () => {
-  const [searchState, setSearchState] = useState<searchState>({
+  const [searchState, setSearchState] = useState<SearchState>({
     selectedOption: "Professor",
-    sliderValues: [0, 100], // tuple
+    sliderValues: ["1", "100"],
   });
 
   function updateSelectedOption(newOption: string): void {
@@ -21,9 +23,15 @@ const Home: NextPage = () => {
     setSearchState(stateCopy);
   }
 
-  function updateSliderVal(index: number, newVal: number): void {
+  function updateLeftSliderVal(newVal: string): void {
     const stateCopy = { ...searchState };
-    stateCopy.sliderValues[index] = newVal;
+    stateCopy.sliderValues[0] = newVal;
+    setSearchState(stateCopy);
+  }
+
+  function updateRightSliderVal(newVal: string): void {
+    const stateCopy = { ...searchState };
+    stateCopy.sliderValues[1] = newVal;
     setSearchState(stateCopy);
   }
 
@@ -33,13 +41,17 @@ const Home: NextPage = () => {
         <title>ProfesScore</title>
       </Head>
 
-      <main className="h-screen w-screen flex flex-col items-center bg-white">
-        <SearchHome
-          selectedOption={searchState.selectedOption}
-          updateSelectedOption={updateSelectedOption}
-          sliderVals={searchState.sliderValues}
-          updateSliderVals={updateSliderVal}
-        ></SearchHome>
+      <main className="h-screen w-screen bg-white">
+        <div className="flex flex-col items-center">
+          <SearchHome
+            selectedOption={searchState.selectedOption}
+            updateSelectedOption={updateSelectedOption}
+            sliderVals={searchState.sliderValues}
+            updateSliderVals={[updateLeftSliderVal, updateRightSliderVal]}
+          ></SearchHome>
+        </div>
+
+        {/* <ViewResults></ViewResults> */}
       </main>
     </div>
   );

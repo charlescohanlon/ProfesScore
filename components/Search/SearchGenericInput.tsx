@@ -14,8 +14,8 @@ const SearchGenericInput: FC<SearchGenericInputProps> = ({
       type="text"
       placeholder={placeholderText}
       className={
-        "w-full px-5 py-2 rounded-full font-Barlow text-brandGray bg-white hover:shadow-inputShadow" +
-        " focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
+        "w-full px-5 py-2 rounded-full font-Barlow text-brandGray bg-white hover:shadow-inputShadow " +
+        "focus:outline-none text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
       }
       onKeyDown={({ key }) => {
         key === "Enter" ? submitFunc() : null;

@@ -1,27 +1,26 @@
 import React, { FC } from "react";
 
 interface SearchGenericInputProps {
-  defaultVal: number;
-  inputRef: React.RefObject<HTMLInputElement>;
-  outputRef: React.RefObject<HTMLInputElement>;
+  value: string;
+  updateVal: Function;
 }
 
 const SearchSliderInput: FC<SearchGenericInputProps> = ({
-  defaultVal,
-  inputRef,
-  outputRef,
+  value,
+  updateVal,
 }): JSX.Element => {
   return (
     <input
-      ref={inputRef}
       type="text"
-      onKeyDown={({ key, currentTarget: { value } }) =>
-        key === "Enter" ? (outputRef.current!.value = value) : null
+      value={parseInt(value) > 100 ? 100 : value}
+      onChange={({ target: { value } }) =>
+        value === "" || (/^[0-9\b]+$/.test(value) && value.length <= 3) // uses regex to enforce digit-only input
+          ? updateVal(value)
+          : null
       }
-      defaultValue={defaultVal}
       className={
         "w-10 sm:w-14 lg:w-20 py-2 rounded-full font-Barlow text-brandGray bg-white text-center" +
-        " hover:shadow-inputShadow focus:outline-none text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl"
+        " hover:shadow-inputShadow focus:outline-none text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
       }
     />
   );

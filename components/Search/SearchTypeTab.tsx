@@ -20,7 +20,7 @@ const SearchTypeTab: FC<SearchTypeTabProps> = ({
             : "bg-white text-brandAmber"
         }` +
         "  w-1/3 px-2 py-1 rounded-t-lg border-4 border-spacing-0 border-brandAmber text-center" +
-        " font-Barlow font-bold text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl cursor-pointer"
+        " font-Barlow font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl cursor-pointer"
       }
       onClick={() => updateSelection(typeText)}
     >

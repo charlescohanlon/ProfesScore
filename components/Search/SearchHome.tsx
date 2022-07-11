@@ -6,8 +6,8 @@ import Logo from "../Logo";
 interface SearchHomeProps {
   selectedOption: string;
   updateSelectedOption: Function;
-  sliderVals: [number, number];
-  updateSliderVals: Function;
+  sliderVals: [string, string];
+  updateSliderVals: [Function, Function];
 }
 
 const SearchHome: FC<SearchHomeProps> = ({
@@ -31,7 +31,11 @@ const SearchHome: FC<SearchHomeProps> = ({
           ></SearchTypeTab>
         ))}
       </div>
-      <div className={"w-full h-fit rounded-b-xl bg-brandAmber"}>
+      <div
+        className={
+          "w-full h-fit rounded-b-xl bg-brandAmber p-4 sm:p-8 md:p-9 lg:p-10"
+        }
+      >
         <SearchForm
           searchType={selectedOption}
           sliderVals={sliderVals}
