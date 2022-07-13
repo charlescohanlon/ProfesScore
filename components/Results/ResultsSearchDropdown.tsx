@@ -1,46 +1,32 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { SearchType } from "../Search/SearchHome";
 
 interface ResultsSearchDropdownProps {
-  selectedOption: string;
-  isSelected: boolean;
-  toggleMenu: Function;
-  linkRef: React.LegacyRef<HTMLAnchorElement>;
+  selectedOption: SearchType;
+  updateSelectedOption: Function;
+  dropdownIsSelected: boolean;
+  toggleDropdown: Function;
 }
 
 const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
   selectedOption,
-  isSelected,
-  toggleMenu,
-  linkRef,
+  updateSelectedOption,
+  dropdownIsSelected,
+  toggleDropdown,
 }): JSX.Element => {
   return (
     <div className="absolute right-3 text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
       <a
-        ref={linkRef}
+        id="SearchDropdown"
+        onClick={() => toggleDropdown()}
         className={
-          "h-fit rounded-xl border-solid border-2 border-brandGray bg-brandAmber text-brandGray " +
-          "flex items-center p-1.5 sm:p-2"
+          "h-fit w-36 rounded-xl border-solid border-2 border-brandGray bg-brandAmber text-brandGray " +
+          "flex justify-center items-center p-1.5 sm:p-2"
         }
         style={{ marginTop: "-2px" }} // to accomadate border
-        onClick={() => {
-          toggleMenu();
-        }}
       >
         {selectedOption}
-        {isSelected ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-        ) : (
+        {dropdownIsSelected ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -53,14 +39,35 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
               clipRule="evenodd"
             />
           </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
         )}
       </a>
-      {isSelected ? <Dropdown></Dropdown> : null}
+      {dropdownIsSelected ? (
+        <Dropdown updateSelectedOption={updateSelectedOption}></Dropdown>
+      ) : null}
     </div>
   );
 };
 
-const Dropdown: FC = (): JSX.Element => {
+interface DropdownProps {
+  updateSelectedOption: Function;
+}
+/*
+ * state will update in the anchor tag and its parent div, everywhere but in Dropdown component
+ */
+const Dropdown: FC<DropdownProps> = ({ updateSelectedOption }): JSX.Element => {
   return (
     <div>
       <ul
@@ -70,7 +77,7 @@ const Dropdown: FC = (): JSX.Element => {
         }
       >
         {["Professor", "Course", "Rating"].map((option) => (
-          <div key={option}>
+          <div key={option} onClick={() => updateSelectedOption(option)}>
             <hr className="m-auto rounded-full border-brandGray" />
             <li className="my-2 text-brandGray">{option}</li>
           </div>

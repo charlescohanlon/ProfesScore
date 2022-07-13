@@ -2,10 +2,9 @@ import React, { FC } from "react";
 
 interface SearchBarProps {
   placeholderText: string;
-  submitFunc: Function;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ placeholderText, submitFunc }) => {
+const SearchBar: FC<SearchBarProps> = ({ placeholderText }) => {
   return (
     <div className="relative w-full rounded-full hover:shadow-inputShadow">
       <div className="absolute h-full flex justify-center items-center w-11 lg:w-12">
@@ -31,9 +30,6 @@ const SearchBar: FC<SearchBarProps> = ({ placeholderText, submitFunc }) => {
           "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white " +
           "focus:outline-none text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
         }
-        onKeyDown={({ key }) => {
-          key === "Enter" ? submitFunc() : null;
-        }}
       />
     </div>
   );

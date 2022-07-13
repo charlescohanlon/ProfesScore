@@ -60,9 +60,7 @@ const SearchSlider: FC<SliderProps> = ({
           min={1}
           max={100}
           value={sliderVals[0]}
-          onChange={({ target }) => {
-            updateSliderVals[0](target.valueAsNumber);
-          }}
+          onChange={({ target }) => updateSliderVals[0](target.valueAsNumber)}
         />
         <input
           type="range"
@@ -70,9 +68,7 @@ const SearchSlider: FC<SliderProps> = ({
           min={1}
           max={100}
           value={sliderVals[1]}
-          onChange={({ target }) => {
-            updateSliderVals[1](target.valueAsNumber);
-          }}
+          onChange={({ target }) => updateSliderVals[1](target.valueAsNumber)}
         />
       </div>
       <SearchSliderInput

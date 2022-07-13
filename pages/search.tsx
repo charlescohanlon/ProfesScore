@@ -1,8 +1,6 @@
-import React, { FC, useState, useRef } from "react";
+import React, { FC, useState } from "react";
 import { GetStaticProps } from "next";
 import ResultsNavbar from "../components/Results/ResultsNavbar";
-import { SearchState } from "./index";
-import { link } from "fs";
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -10,49 +8,29 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-interface ResultsState extends SearchState {
-  searchMenuIsSelected: boolean;
-  linkRef: React.LegacyRef<HTMLAnchorElement>;
-}
-
 const ViewResults: FC = (): JSX.Element => {
-  const [state, setState] = useState<ResultsState>({
-    selectedOption: "Rating",
-    sliderValues: [0, 100],
-    searchMenuIsSelected: false,
-    linkRef: useRef<HTMLAnchorElement>(null),
-  });
+  // change to: NextPage
+  const [dropdownIsSelected, setDropdownIsSelected] = useState(false); // ask Carlos if there is a better way to do this
 
-  function toggleMenu() {
-    const stateCopy = { ...state };
-    stateCopy.searchMenuIsSelected = !stateCopy.searchMenuIsSelected;
-    setState(stateCopy);
+  function toggleDropdown() {
+    setDropdownIsSelected(!dropdownIsSelected);
   }
 
-  function deselectMenu(target: EventTarget) {
-    if (target === null) {
-      return;
-    }
-    const stateCopy = { ...state };
-    stateCopy.searchMenuIsSelected = false;
-    setState(stateCopy);
+  function deselectDropdown() {
+    setDropdownIsSelected(false);
   }
 
-  const { selectedOption, sliderValues, searchMenuIsSelected, linkRef } = state;
   return (
     <div
-      onClick={(ev) => {
-        // deselectMenu(ev.target);
-        console.log("ref:", linkRef!); // need to compare something from ref and target, not going to be perfect
-        // console.log(linkRef!.current.charset);
-      }}
+      onClick={({ target }) =>
+        target instanceof HTMLAnchorElement && target.id === "SearchDropdown" // closes dropdown menu when click away
+          ? null
+          : deselectDropdown()
+      }
     >
       <ResultsNavbar
-        selectedOption={selectedOption}
-        sliderVals={sliderValues}
-        searchMenuIsSelected={searchMenuIsSelected}
-        toggleMenu={toggleMenu}
-        linkRef={linkRef}
+        dropdownIsSelected={dropdownIsSelected}
+        toggleDropdown={toggleDropdown}
       ></ResultsNavbar>
     </div>
   );

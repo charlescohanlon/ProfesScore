@@ -1,15 +1,16 @@
 import React, { FC } from "react";
+import { SearchType } from "./SearchHome";
 
 interface SearchTypeTabProps {
-  typeText: string;
+  typeText: SearchType;
   isSelected: boolean;
-  updateSelection: Function;
+  updateSelectedOption: Function;
 }
 
 const SearchTypeTab: FC<SearchTypeTabProps> = ({
   typeText,
   isSelected,
-  updateSelection,
+  updateSelectedOption,
 }): JSX.Element => {
   return (
     <a
@@ -22,7 +23,7 @@ const SearchTypeTab: FC<SearchTypeTabProps> = ({
         "  w-1/3 px-2 py-1 rounded-t-lg border-4 border-spacing-0 border-brandAmber text-center" +
         " font-Barlow font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl cursor-pointer"
       }
-      onClick={() => updateSelection(typeText)}
+      onClick={() => updateSelectedOption(typeText)}
     >
       {typeText}
     </a>
