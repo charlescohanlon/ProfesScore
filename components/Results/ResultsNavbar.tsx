@@ -21,25 +21,23 @@ const ResultsNavbar: FC<ResultsNavbarProps> = ({
 
   return (
     <>
-      {/* <div className="bg-white">
-        <Logo></Logo>
-      </div> */}
-      <div
-        className={
-          "fixed w-screen h-fit bg-brandAmber flex justify-center items-start " +
-          "p-3 sm:p-4 md:p-5 lg:p-7 xl:p-8"
-        }
-      >
-        <div className="relative pr-2 sm:pr-3 md:pr-4 lg:pr-6 xl:pr-7">
-          <ResultsSearchDropdown // need to make it so when u click anywhere else the menu goes away
-            selectedOption={selectedOption}
-            updateSelectedOption={updateSelectedOption}
-            dropdownIsSelected={dropdownIsSelected}
-            toggleDropdown={toggleDropdown}
-          ></ResultsSearchDropdown>
+      {/* <div className="absolute w-screen h-24 h z-10 bg-red-400 opacity-30"></div> */}
+      <div className="fixed flex">
+        <div className="absolute w-2/12 h-full mt-3 ml-3 pt-4 px-3 rounded-xl bg-white">
+          <Logo></Logo>
         </div>
-        <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12">
-          <SearchForm searchType={selectedOption}></SearchForm>
+        <div className="w-screen h-24 hover:h-fit overflow-clip pt-7 pb-6 flex justify-center bg-brandAmber">
+          <div className=" h-fit w-1/12">
+            <ResultsSearchDropdown
+              selectedOption={selectedOption}
+              updateSelectedOption={updateSelectedOption}
+              dropdownIsSelected={dropdownIsSelected}
+              toggleDropdown={toggleDropdown}
+            ></ResultsSearchDropdown>
+          </div>
+          <div className="h-fit w-5/12">
+            <SearchForm searchType={selectedOption}></SearchForm>
+          </div>
         </div>
       </div>
     </>

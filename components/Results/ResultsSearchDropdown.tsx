@@ -15,15 +15,15 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
   toggleDropdown,
 }): JSX.Element => {
   return (
-    <div className="absolute right-3 text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
+    <div className="w-full min-w-fit text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
       <a
         id="SearchDropdown"
         onClick={() => toggleDropdown()}
         className={
-          "h-fit w-36 rounded-xl border-solid border-2 border-brandGray bg-brandAmber text-brandGray " +
+          "h-fit rounded-xl border-solid border-2 border-brandGray bg-brandAmber text-brandGray " +
           "flex justify-center items-center p-1.5 sm:p-2"
         }
-        style={{ marginTop: "-2px" }} // to accomadate border
+        style={{ margin: "-2px" }} // to accomadate border
       >
         {selectedOption}
         {dropdownIsSelected ? (
@@ -69,7 +69,7 @@ interface DropdownProps {
  */
 const Dropdown: FC<DropdownProps> = ({ updateSelectedOption }): JSX.Element => {
   return (
-    <div>
+    <div className="absolute">
       <ul
         className={
           "pt-12 w-full list-none border-solid border-2 border-brandGray bg-brandAmber rounded-xl " +
