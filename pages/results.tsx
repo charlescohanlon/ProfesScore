@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react";
-import { GetStaticProps } from "next";
+import React, { useState } from "react";
+import { NextPage, GetStaticProps } from "next";
 import ResultsNavbar from "../components/Results/ResultsNavbar";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -8,12 +8,12 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const ViewResults: FC = (): JSX.Element => {
-  // change to: NextPage
+const Results: NextPage = (): JSX.Element => {
   const [dropdownIsSelected, setDropdownIsSelected] = useState(false); // ask Carlos if there is a better way to do this
 
   function toggleDropdown() {
-    setDropdownIsSelected(!dropdownIsSelected);
+    // debugger;
+    setDropdownIsSelected(true);
   }
 
   function deselectDropdown() {
@@ -36,4 +36,4 @@ const ViewResults: FC = (): JSX.Element => {
   );
 };
 
-export default ViewResults;
+export default Results;

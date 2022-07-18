@@ -7,7 +7,7 @@ const SearchSubmitBtn: FC = (): JSX.Element => {
       value="Search"
       className={
         "px-10 py-1 rounded-full bg-brandAmber text-white font-bold " +
-        "hover:bg-white hover:text-brandAmber text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        "hover:bg-white hover:text-brandAmber text-lg sm:text-sm md:text-base lg:text-lg xl:text-xl"
       }
     />
   );

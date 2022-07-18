@@ -1,23 +1,20 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import SearchHome from "../components/Search/SearchHome";
-import ViewResults from "./search"; // for dev purposes
+import NavbarLinks from "../components/NavbarLinks";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Head>
-        <title>ProfesScore</title>
-      </Head>
-
+    <>
       <main className="h-screen w-screen bg-white">
-        {/* <div className="flex flex-col items-center">
+        <NavbarLinks textColorClass="text-brandGray"></NavbarLinks>
+        <div className="mx-auto mt-60">
           <SearchHome></SearchHome>
-        </div> */}
-
-        <ViewResults></ViewResults>
+        </div>
       </main>
-    </div>
+      <footer className="w-screen h-20 bg-gray-100 flex justify-center">
+        <p className="my-auto">© Charles O'Hanlon</p>
+      </footer>
+    </>
   );
 };
 

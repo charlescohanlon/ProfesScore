@@ -13,7 +13,7 @@ const SearchHome: FC = (): JSX.Element => {
   }
 
   return (
-    <div className="relative top-1/4 h-fit w-10/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12">
+    <div className="m-auto w-10/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12">
       <div className="m-5">
         <Logo></Logo>
       </div>

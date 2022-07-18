@@ -33,12 +33,12 @@ const ProfessorForm: FC = (): JSX.Element => {
 
 const CourseForm: FC = (): JSX.Element => {
   return (
-    <div className="grid grid-rows-2 grid-cols-2 justify-items-center gap-3 sm:gap-4 md:gap-5 lg:gap-7 xl:gap-8">
+    <div className="grid grid-rows-2 grid-cols-2 justify-items-center gap-3 sm:gap-5 md:gap-7 lg:gap-8">
       <div className="w-full col-span-full ">
         <SearchBar placeholderText="Course Title"></SearchBar>
       </div>
-      <SearchGenericInput placeholderText="Subject (optional)"></SearchGenericInput>
-      <SearchGenericInput placeholderText="Professor (optional)"></SearchGenericInput>
+      <SearchGenericInput placeholderText="Subject (opt.)"></SearchGenericInput>
+      <SearchGenericInput placeholderText="Professor (opt.)"></SearchGenericInput>
     </div>
   );
 };
@@ -55,7 +55,7 @@ const RatingForm: FC = (): JSX.Element => {
   }
 
   return (
-    <div className="grid grid-rows-2 justify-items-center gap-3 sm:gap-4 md:gap-5 lg:gap-7 xl:gap-8">
+    <div className="grid grid-rows-2 justify-items-center gap-3 sm:gap-5 md:gap-7 lg:gap-8">
       <SearchSlider
         sliderVals={sliderVals}
         updateSliderVals={[setLeftSliderVal, setRightSliderVal]}

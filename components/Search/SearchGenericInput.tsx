@@ -13,7 +13,7 @@ const SearchGenericInput: FC<SearchGenericInputProps> = ({
       placeholder={placeholderText}
       className={
         "w-full px-5 py-2 rounded-full font-Barlow text-brandGray bg-white hover:shadow-inputShadow " +
-        "focus:outline-none text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        "focus:outline-none text-lg sm:text-sm md:text-base lg:text-lg xl:text-xl"
       }
     />
   );

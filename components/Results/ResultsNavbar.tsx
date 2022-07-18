@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import ResultsSearchDropdown from "./ResultsSearchDropdown";
 import SearchForm from "../Search/SearchForm";
 import Logo from "../Logo";
+import NavbarLinks from "../NavbarLinks";
 import { SearchType } from "../Search/SearchHome";
 
 interface ResultsNavbarProps {
@@ -13,7 +14,7 @@ const ResultsNavbar: FC<ResultsNavbarProps> = ({
   dropdownIsSelected,
   toggleDropdown,
 }): JSX.Element => {
-  const [selectedOption, setSelectedOption] = useState<SearchType>("Professor");
+  const [selectedOption, setSelectedOption] = useState<SearchType>("Course");
 
   function updateSelectedOption(newOption: SearchType): void {
     setSelectedOption(newOption);
@@ -21,16 +22,32 @@ const ResultsNavbar: FC<ResultsNavbarProps> = ({
 
   return (
     <>
-      {/* <div className="absolute w-screen h-24 h z-10 bg-red-400 opacity-30"></div> */}
-      <div className="fixed flex">
-        <div className="absolute w-2/12 h-full mt-3 ml-3 pt-4 px-3 rounded-xl bg-white">
+      {/* <div className="absolute w-screen h-28 z-10 bg-red-400 opacity-30"></div> */}
+      <div className="fixed flex flex-col bg-brandAmber sm:flex-row">
+        <div
+          className={
+            "w-1/2 mt-2 ml-2 p-1.5 rounded-t-xl bg-white " +
+            "sm:absolute sm:w-2/12 sm:h-full sm:pt-6 sm:rounded-xl " +
+            "md:mt-3 md:ml-3 md:pt-7 " +
+            "lg:pt-8 " +
+            "2xl:pt-6 2xl:max-w-sm"
+          }
+        >
           <a href="">
             <Logo></Logo>
           </a>
         </div>
-        <div className="w-screen max-h-24 hover:max-h-48 transition-all ease-in-out overflow-clip pt-7 pb-6 flex justify-center bg-brandAmber">
-          <div className="w-2/5 flex">
-            <div className="h-fit w-2/12 mr-2">
+        <div
+          className={
+            "w-screen max-h-16 hover:max-h-96 pt-3 pb-2 bg-brandAmber transition-all ease-in-out flex justify-center " +
+            "overflow-hidden overflow-clip " + // clip not supported by by all browsers
+            "sm:pb-5 sm:pt-6 sm:max-h-20 " +
+            "md:pb-7 md:pt-7 md:max-h-24 " +
+            "lg:pb-8 lg:pt-9 lg:max-h-28 "
+          }
+        >
+          <div className="w-full flex justify-center">
+            <div className="ml-2 mr-1 sm:mx-0.5 md:mx-1 lg:mx-2">
               <ResultsSearchDropdown
                 selectedOption={selectedOption}
                 updateSelectedOption={updateSelectedOption}
@@ -38,18 +55,11 @@ const ResultsNavbar: FC<ResultsNavbarProps> = ({
                 toggleDropdown={toggleDropdown}
               ></ResultsSearchDropdown>
             </div>
-            <div className="h-fit w-10/12 ml-2">
+            <div className="w-full sm:w-6/12 md:w-5/12 2xl:w-4/12 ml-1 mr-2 sm:mx-0.5 md:mx-1 lg:mx-2">
               <SearchForm searchType={selectedOption}></SearchForm>
             </div>
           </div>
-        </div>
-        <div className="absolute right-10 h-24 flex items-center">
-          <a href="" className="mx-5 text-xl font-Barlow text-white">
-            About
-          </a>
-          <a href="" className="mx-5 text-xl font-Barlow text-white">
-            Contact
-          </a>
+          <NavbarLinks textColorClass="text-white"></NavbarLinks>
         </div>
       </div>
     </>
