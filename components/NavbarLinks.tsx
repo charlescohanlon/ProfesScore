@@ -2,10 +2,10 @@ import React, { FC } from "react";
 import Link from "next/link";
 
 interface NavbarLinksProps {
-  textColorClass: string;
+  extraClasses: string;
 }
 
-const NavbarLinks: FC<NavbarLinksProps> = ({ textColorClass }): JSX.Element => {
+const NavbarLinks: FC<NavbarLinksProps> = ({ extraClasses }): JSX.Element => {
   const commonClasses = "px-1 xs:px-4 sm:px-2 xl:mx-6 hover:scale-105";
   return (
     <div
@@ -15,7 +15,7 @@ const NavbarLinks: FC<NavbarLinksProps> = ({ textColorClass }): JSX.Element => {
         "md:h-24 md:text-base " +
         "lg:h-28 lg:text-lg lg:right-2 " +
         "xl:text-xl xl:right-4 " +
-        textColorClass
+        extraClasses
       }
     >
       <Link href="/about">

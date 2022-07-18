@@ -1,10 +1,17 @@
 import React, { FC } from "react";
+import { useRouter } from "next/router";
 
 interface SearchBarProps {
   placeholderText: string;
 }
 
 const SearchBar: FC<SearchBarProps> = ({ placeholderText }) => {
+  const router = useRouter();
+
+  function submitQuery() {
+    router.push("/results");
+  }
+
   return (
     <div className="relative w-full rounded-full hover:shadow-inputShadow">
       <div className="absolute h-full flex justify-center items-center w-11 lg:w-12">
@@ -25,6 +32,7 @@ const SearchBar: FC<SearchBarProps> = ({ placeholderText }) => {
       </div>
       <input
         type="text"
+        onKeyDown={({ key }) => (key === "Enter" ? submitQuery() : null)}
         placeholder={placeholderText}
         className={
           "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white " +

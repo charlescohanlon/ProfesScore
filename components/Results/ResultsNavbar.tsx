@@ -59,7 +59,7 @@ const ResultsNavbar: FC<ResultsNavbarProps> = ({
               <SearchForm searchType={selectedOption}></SearchForm>
             </div>
           </div>
-          <NavbarLinks textColorClass="text-white"></NavbarLinks>
+          <NavbarLinks extraClasses="text-white"></NavbarLinks>
         </div>
       </div>
     </>

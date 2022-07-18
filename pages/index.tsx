@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <main className="h-screen w-screen bg-white">
-        <NavbarLinks textColorClass="text-brandGray"></NavbarLinks>
+        <NavbarLinks extraClasses="text-brandGray"></NavbarLinks>
         <div className="mx-auto mt-60">
           <SearchHome></SearchHome>
         </div>
