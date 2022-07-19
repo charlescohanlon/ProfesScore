@@ -6,7 +6,7 @@ function ProfesScore({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href="/public/images/ProfesScore.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <title>ProfesScore</title>
       </Head>
 

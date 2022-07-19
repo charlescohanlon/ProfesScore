@@ -5,15 +5,7 @@ import Logo from "../Logo";
 import NavbarLinks from "../NavbarLinks";
 import { SearchType } from "../Search/SearchHome";
 
-interface ResultsNavbarProps {
-  dropdownIsSelected: boolean;
-  toggleDropdown: Function;
-}
-
-const ResultsNavbar: FC<ResultsNavbarProps> = ({
-  dropdownIsSelected,
-  toggleDropdown,
-}): JSX.Element => {
+const ResultsNavbar: FC = (): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<SearchType>("Course");
 
   function updateSelectedOption(newOption: SearchType): void {
@@ -51,8 +43,6 @@ const ResultsNavbar: FC<ResultsNavbarProps> = ({
               <ResultsSearchDropdown
                 selectedOption={selectedOption}
                 updateSelectedOption={updateSelectedOption}
-                dropdownIsSelected={dropdownIsSelected}
-                toggleDropdown={toggleDropdown}
               ></ResultsSearchDropdown>
             </div>
             <div className="w-full sm:w-6/12 md:w-5/12 2xl:w-4/12 ml-1 mr-2 sm:mx-0.5 md:mx-1 lg:mx-2">

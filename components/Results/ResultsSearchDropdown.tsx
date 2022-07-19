@@ -1,19 +1,38 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useRef, useEffect } from "react";
 import { SearchType } from "../Search/SearchHome";
 
 interface ResultsSearchDropdownProps {
   selectedOption: SearchType;
   updateSelectedOption: Function;
-  dropdownIsSelected: boolean;
-  toggleDropdown: Function;
 }
 
 const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
   selectedOption,
   updateSelectedOption,
-  dropdownIsSelected,
-  toggleDropdown,
 }): JSX.Element => {
+  const [dropdownIsSelected, setDropdownIsSelected] = useState(false);
+  const dropdownRef = useRef<any>(null);
+
+  function toggleDropdown() {
+    setDropdownIsSelected(!dropdownIsSelected);
+  }
+
+  function deselectDropdown() {
+    setDropdownIsSelected(false);
+  }
+
+  useEffect(() => {
+    function handleNotDropdownClicked({ target }: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        deselectDropdown();
+      }
+    }
+    document.addEventListener("mousedown", handleNotDropdownClicked);
+    return () => {
+      document.removeEventListener("mousedown", handleNotDropdownClicked); // Unbind the event listener on clean up
+    };
+  }, [dropdownRef]);
+
   const dropdown: JSX.Element = (
     <div
       className={
@@ -27,19 +46,28 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
     >
       <a
         className="px-0.5 py-2 "
-        onClick={() => updateSelectedOption("Professor")}
+        onClick={() => {
+          updateSelectedOption("Professor");
+          deselectDropdown();
+        }}
       >
         Professor
       </a>
       <a
         className="px-0.5 py-2 border-t-2 border-brandGray"
-        onClick={() => updateSelectedOption("Course")}
+        onClick={() => {
+          updateSelectedOption("Course");
+          deselectDropdown();
+        }}
       >
         Course
       </a>
       <a
         className="px-0.5 py-2 border-t-2 border-brandGray"
-        onClick={() => updateSelectedOption("Rating")}
+        onClick={() => {
+          updateSelectedOption("Rating");
+          deselectDropdown();
+        }}
       >
         Rating
       </a>
@@ -47,7 +75,10 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
   );
 
   return (
-    <div className="text-brandGray text-center text-xl sm:text-xs md:text-sm lg:text-lg xl:text-xl cursor-pointer select-none">
+    <div
+      ref={dropdownRef}
+      className="text-brandGray text-center text-xl sm:text-xs md:text-sm lg:text-lg xl:text-xl cursor-pointer select-none"
+    >
       <a
         id="SearchDropdown"
         onClick={() => toggleDropdown()}
