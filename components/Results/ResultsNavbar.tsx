@@ -6,7 +6,7 @@ import NavbarLinks from "../NavbarLinks";
 import { SearchType } from "../Search/SearchHome";
 
 const ResultsNavbar: FC = (): JSX.Element => {
-  const [selectedOption, setSelectedOption] = useState<SearchType>("Course");
+  const [selectedOption, setSelectedOption] = useState<SearchType>("Professor");
 
   function updateSelectedOption(newOption: SearchType): void {
     setSelectedOption(newOption);
