@@ -22,7 +22,6 @@ export const handler: NextApiHandler = (
       }
     });
   });
-  // con.end(); when to terminate connection?
 };
 
 export default handler;
