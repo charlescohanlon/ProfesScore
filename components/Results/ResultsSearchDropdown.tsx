@@ -36,7 +36,7 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
   const dropdown: JSX.Element = (
     <div
       className={
-        "absolute w-full left-0.5 border-2 border-brandGray bg-orange-300 flex flex-col " +
+        "absolute z-10 w-full left-0.5 border-2 border-brandGray bg-orange-300 flex flex-col " +
         "sm:left-auto sm:w-20 sm:rounded-b-xl " +
         "md:w-24 " +
         "lg:w-28 " +
@@ -83,17 +83,17 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
         id="SearchDropdown"
         onClick={() => toggleDropdown()}
         className={
-          "w-12 flex justify-center items-center bg-orange-300 border-2 border-brandGray " +
+          "w-12 h-12 flex justify-center items-center bg-orange-300 border-2 border-brandGray " +
           "sm:w-20 sm:h-10 " +
           "md:w-24 md:h-11 " +
           "lg:w-28 lg:h-12 " +
           "xl:w-32 " +
-          (dropdownIsSelected ? "rounded-t-xl h-14 " : "rounded-xl h-12 ")
+          (dropdownIsSelected ? "rounded-t-xl" : "rounded-xl")
         }
         style={{ margin: "-2px" }} // to accomadate border
       >
         <p className="hidden sm:contents">{selectedOption}</p>
-        <div className="-rotate-90 sm:rotate-0">
+        <div className="">
           {dropdownIsSelected ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
             >
               <path
                 fillRule="evenodd"
-                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
                 clipRule="evenodd"
               />
             </svg>

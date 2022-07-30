@@ -18,7 +18,7 @@ const ResultsNavbar: FC = (): JSX.Element => {
       <div className="fixed top-0 flex flex-col bg-brandAmber sm:flex-row">
         <div
           className={
-            "w-1/2 mt-2 ml-2 p-1.5 rounded-t-xl bg-white " +
+            "w-1/2 mt-2 ml-2 pt-1.5 px-1.5 rounded-t-xl bg-white " +
             "sm:absolute sm:w-2/12 sm:h-full sm:pt-6 sm:rounded-xl " +
             "md:mt-3 md:ml-3 md:pt-7 " +
             "lg:pt-8 " +

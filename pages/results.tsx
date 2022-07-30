@@ -31,7 +31,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       });
     });
   });
-  debugger;
   return {
     props: { queryResults },
   };
@@ -40,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Results: NextPage = ({ queryResults }: any): JSX.Element => {
   useEffect(() => console.log(JSON.parse(queryResults)), []);
   return (
-    <main className="w-screen h-screen flex flex-col">
+    <main className="w-screen h-screen overflow-hidden flex flex-col">
       <ResultsNavbar></ResultsNavbar>
       <ResultsScrollContainer></ResultsScrollContainer>
     </main>
