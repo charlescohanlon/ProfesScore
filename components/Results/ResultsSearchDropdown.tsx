@@ -36,7 +36,7 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
   const dropdown: JSX.Element = (
     <div
       className={
-        "absolute z-10 w-full left-0.5 border-2 border-brandGray bg-orange-300 flex flex-col " +
+        "absolute w-full left-0.5 border-2 border-brandGray bg-orange-300 flex flex-col " +
         "sm:left-auto sm:w-20 sm:rounded-b-xl " +
         "md:w-24 " +
         "lg:w-28 " +

@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import Link from "next/link";
 import ResultsSearchDropdown from "./ResultsSearchDropdown";
 import SearchForm from "../Search/SearchForm";
 import Logo from "../Logo";
@@ -25,14 +26,16 @@ const ResultsNavbar: FC = (): JSX.Element => {
             "2xl:pt-6 2xl:max-w-sm"
           }
         >
-          <a href="">
-            <Logo></Logo>
-          </a>
+          <Link href="/">
+            <a>
+              <Logo></Logo>
+            </a>
+          </Link>
         </div>
         <div
           className={
-            "w-screen max-h-16 hover:max-h-96 pt-3 pb-2 bg-brandAmber transition-all ease-in-out flex justify-center " +
-            "overflow-hidden overflow-clip " + // clip not supported by by all browsers
+            "w-screen max-h-16 hover:max-h-96 pt-3 pb-2 bg-brandAmber transition-all ease-in-out duration-200 " +
+            "flex justify-center overflow-hidden overflow-clip " + // clip not supported by by all browsers
             "sm:pb-5 sm:pt-6 sm:max-h-20 " +
             "md:pb-7 md:pt-7 md:max-h-24 " +
             "lg:pb-8 lg:pt-9 lg:max-h-28 "

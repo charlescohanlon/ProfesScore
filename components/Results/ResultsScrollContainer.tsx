@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import ResultsProfessorCard from "./ResultsProfessorCard";
+import ResultsCourseCard from "./ResultsCourseCard";
 
 const ResultsScrollContainer: FC = (): JSX.Element => {
   return (
@@ -13,17 +14,35 @@ const ResultsScrollContainer: FC = (): JSX.Element => {
           "xl:w-6/12 xl:mt-36 xl:p-8"
         }
       >
-        {Array(1)
+        <div
+          className={
+            "not-last:mb-3 " + "not-last:sm:mb-4 " + "not-last:md:mb-3 "
+          }
+        >
+          <ResultsCourseCard courseName="MATH 1C"></ResultsCourseCard>
+        </div>
+        {Array(5)
           .fill(0)
           .map(() => {
             return (
-              <div
-                className={
-                  "mb-3 " + "sm:mb-4 " + "md:mb-5 " + "lg:mb-6 " + "xl:mb-7"
-                }
-              >
-                <ResultsProfessorCard></ResultsProfessorCard>
-              </div>
+              <>
+                <div
+                  className={
+                    "ml-10 not-last:mb-3 " +
+                    "not-last:sm:mb-4 " +
+                    "not-last:md:mb-5 " +
+                    "not-last:lg:mb-6 " +
+                    "not-last:xl:mb-3"
+                  }
+                >
+                  <ResultsProfessorCard
+                    firstName="Zack"
+                    lastName="Judson"
+                    taughtCourses={["MATH 1B", "MATH 1C"]}
+                    id={0}
+                  ></ResultsProfessorCard>
+                </div>
+              </>
             );
           })}
       </div>

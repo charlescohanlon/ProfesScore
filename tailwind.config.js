@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ["./pages/*.tsx",
     "./components/**",
@@ -19,11 +20,17 @@ module.exports = {
       },
       fontFamily: {
         'Barlow': ['Barlow', 'sans-serif'],
+        'PTSans': ['PT Sans', 'sans-serif'],
       },
       boxShadow: {
         'inputShadow': '0 1px 6px rgb(32 33 36 / 28%)',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant('last', '&:last-child');
+      addVariant('not-last', '&:not(:last-child)');
+    }),
+  ],
 }
