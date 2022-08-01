@@ -10,7 +10,7 @@ const ResultsCourseCard: FC<ResultCouseCardProps> = ({
   return (
     <div
       className={
-        "h-full py-1 bg-brandAmber rounded-lg border-2 border-white bg-gray50 flex justify-center " +
+        "py-1 bg-brandAmber rounded-t-lg rounded-br-lg flex justify-center " +
         "text-white text-center " +
         "md:py-2 "
       }

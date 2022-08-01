@@ -16,7 +16,7 @@ const ResultsNavbar: FC = (): JSX.Element => {
   return (
     <>
       {/* <div className="absolute w-screen h-28 z-10 bg-red-400 opacity-30"></div> */}
-      <div className="fixed top-0 flex flex-col bg-brandAmber sm:flex-row">
+      <div className="relative z-10 top-0 flex flex-col bg-brandAmber sm:flex-row">
         <div
           className={
             "w-1/2 mt-2 ml-2 pt-1.5 px-1.5 rounded-t-xl bg-white " +
@@ -34,7 +34,7 @@ const ResultsNavbar: FC = (): JSX.Element => {
         </div>
         <div
           className={
-            "w-screen max-h-16 hover:max-h-96 pt-3 pb-2 bg-brandAmber transition-all ease-in-out duration-200 " +
+            "w-screen max-h-16 hover:max-h-96 pt-3 pb-2 bg-brandAmber transition-all ease-in-out duration-300 delay-100 " +
             "flex justify-center overflow-hidden overflow-clip " + // clip not supported by by all browsers
             "sm:pb-5 sm:pt-6 sm:max-h-20 " +
             "md:pb-7 md:pt-7 md:max-h-24 " +

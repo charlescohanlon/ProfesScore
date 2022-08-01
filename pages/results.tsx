@@ -40,9 +40,7 @@ const Results: NextPage = ({ queryResults }: any): JSX.Element => {
   // useEffect(() => console.log(JSON.parse(queryResults)), []);
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
-      <div className="relative z-10">
-        <ResultsNavbar></ResultsNavbar>
-      </div>
+      <ResultsNavbar></ResultsNavbar>
       <ResultsScrollContainer></ResultsScrollContainer>
     </main>
   );
