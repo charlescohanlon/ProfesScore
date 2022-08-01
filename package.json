@@ -20,6 +20,7 @@
     "tailwindcss": "^3.1.4"
   },
   "devDependencies": {
+    "@types/line-reader": "^0.0.34",
     "@types/mysql": "^2.15.21",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
