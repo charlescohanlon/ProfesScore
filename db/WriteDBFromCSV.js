@@ -1,24 +1,10 @@
 import dotenv from "dotenv";
-import Mysql from "mysql";
 import lineReader from "line-reader";
+import Mysql from "mysql";
+import { CONNECTING } from "ws";
 dotenv.config({ path: ".env.local" });
 
-
-// const connection = Mysql.createConnection({
-// 	host: process.env.DB_HOST,
-// 	user: process.env.DB_USER,
-// 	password: process.env.DB_PASS.substring(1),
-// });
-
-// connection.connect((err) => {
-// 	if (err) {
-// 		console.error(err);
-// 		return;
-// 	}
-// 	connection.query(`DELETE FROM professcore.professors;`);
-// 	connection.end((err) => { if (err) console.error(err); });
-// });
-function main() {
+function parseCSV() {
 	let congregatedEntries = [];
 	lineReader.eachLine(
 		"./db/datadTest.csv",
@@ -38,26 +24,56 @@ function main() {
 				f_grades: parseInt(course[12].trim()),
 				withdrawals: parseInt(course[13].trim()),
 			}
-			const sameCourseEntryIndex = congregatedEntries.findIndex((elm) => {
+			const sameEntryIndex = congregatedEntries.findIndex((elm) => {
 				return (elm.year === courseObj.year && elm.semester === courseObj.semester
 					&& elm.firstName === courseObj.firstName && elm.lastName === courseObj.lastName
 					&& elm.subjectAbbr === courseObj.subjectAbbr && elm.courseNumber === courseObj.courseNumber);
 			});
-			if (sameCourseEntryIndex > -1) {
-				congregatedEntries[sameCourseEntryIndex].a_grades += courseObj.a_grades;
-				congregatedEntries[sameCourseEntryIndex].b_grades += courseObj.b_grades;
-				congregatedEntries[sameCourseEntryIndex].c_grades += courseObj.c_grades;
-				congregatedEntries[sameCourseEntryIndex].d_grades += courseObj.d_grades;
-				congregatedEntries[sameCourseEntryIndex].f_grades += courseObj.f_grades;
-				congregatedEntries[sameCourseEntryIndex].withdrawals += courseObj.withdrawals;
+			if (sameEntryIndex > -1) {
+				congregatedEntries[sameEntryIndex].a_grades += courseObj.a_grades;
+				congregatedEntries[sameEntryIndex].b_grades += courseObj.b_grades;
+				congregatedEntries[sameEntryIndex].c_grades += courseObj.c_grades;
+				congregatedEntries[sameEntryIndex].d_grades += courseObj.d_grades;
+				congregatedEntries[sameEntryIndex].f_grades += courseObj.f_grades;
+				congregatedEntries[sameEntryIndex].withdrawals += courseObj.withdrawals;
 			} else {
 				congregatedEntries.push(courseObj);
 			}
-			if (last) congregatedEntries.push("test");
+			if (last) writeDB(congregatedEntries);
 		}
 	);
-	console.log(congregatedEntries);
 }
 
-main();
+function writeDB(entries) {
+	const con = Mysql.createConnection({
+		host: process.env.DB_HOST,
+		user: process.env.DB_USER,
+		password: process.env.DB_PASS.substring(1),
+	});
+
+	con.connect((err) => {
+		if (err) {
+			console.error(err);
+			return;
+		}
+		entries.forEach((elm) => {
+			con.query("USE professcore;");
+			con.query(`INSERT INTO professors ('first_name', 'last_name') VALUES (${elm.firstName}, ${elm.lastName});`);
+			con.query(`INSERT INTO subject ('abbreviation') VALUES (${elm.subjectAbbr});`);
+			
+
+
+
+
+
+		});
+		con.end((err) => { if (err) console.error(err); });
+	});
+
+}
+
+parseCSV();
+
+
+
 
