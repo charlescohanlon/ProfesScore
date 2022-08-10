@@ -8,6 +8,7 @@ const SearchSubmitBtn: FC<SearchSubmitBtnProps> = ({ submit }): JSX.Element => {
     <input
       type="button"
       value="Search"
+      onClick={() => submit()}
       className={
         "px-10 py-1 rounded-full bg-brandAmber text-white font-bold " +
         "hover:bg-white hover:text-brandAmber text-lg sm:text-sm md:text-base lg:text-lg xl:text-xl"

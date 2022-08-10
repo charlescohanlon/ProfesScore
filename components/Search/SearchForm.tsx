@@ -9,16 +9,23 @@ export interface SearchSubmitProps {
   submitQuery: Function;
 }
 
+export interface SearchQueryObject {
+  professor?: string;
+  course?: string;
+  subject?: string;
+  range?: string;
+}
+
 interface SearchFormProps {
   searchType: SearchType;
 }
 
 const SearchForm: FC<SearchFormProps> = ({ searchType }): JSX.Element => {
   const router = useRouter();
-  function submitQuery(query: string) {
+  function submitQuery(query: SearchQueryObject) {
     router.push({
       pathname: "/results",
-      query: { type: searchType },
+      query: { type: searchType, ...query },
     });
   }
 
