@@ -10,10 +10,10 @@ export interface SearchSubmitProps {
 }
 
 export interface SearchQueryObject {
-  professor?: string;
-  course?: string;
-  subject?: string;
-  range?: string;
+  pq?: string;
+  cq?: string;
+  sq?: string;
+  rq?: string;
 }
 
 interface SearchFormProps {

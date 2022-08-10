@@ -16,7 +16,7 @@ const RatingForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
 
   function buildQuery() {
     const query: SearchQueryObject = {
-      range: `${sliderVals[0]}-${sliderVals[1]}`,
+      rq: `${sliderVals[0]}-${sliderVals[1]}`,
     };
     submitQuery(query);
   }

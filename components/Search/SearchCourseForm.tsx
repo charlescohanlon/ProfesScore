@@ -8,10 +8,10 @@ const CourseForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
   const [subjectVal, setSubjectVal] = useState<string>("");
 
   function buildQuery() {
-    const query: SearchQueryObject = {
-      course: courseVal,
-      subject: subjectVal,
-    };
+    const query: SearchQueryObject = {};
+    courseVal.trim() !== "" ? (query.cq = courseVal) : null;
+    subjectVal.trim() !== "" ? (query.sq = subjectVal) : null;
+
     submitQuery(query);
   }
 

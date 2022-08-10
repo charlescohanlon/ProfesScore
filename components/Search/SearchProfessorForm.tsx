@@ -3,12 +3,11 @@ import { SearchQueryObject, SearchSubmitProps } from "./SearchForm";
 import SearchBar from "./SearchBar";
 
 const ProfessorForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
-  const [professorVal, setProfessorVal] = useState<string>();
+  const [professorVal, setProfessorVal] = useState<string>("");
 
   function buildQuery() {
-    const query: SearchQueryObject = {
-      professor: professorVal,
-    };
+    const query: SearchQueryObject = {};
+    professorVal.trim() !== "" ? (query.pq = professorVal) : null;
     submitQuery(query);
   }
 
