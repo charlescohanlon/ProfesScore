@@ -6,7 +6,7 @@ dotenv.config({ path: ".env.local" });
 function parseCSV() {
 	let congregatedEntries = [];
 	lineReader.eachLine(
-		"./db/datadTest.csv",
+		"./db/datad.csv",
 		(line, last) => {
 			const course = line.split(",");
 			const courseObj = {
@@ -23,6 +23,7 @@ function parseCSV() {
 				f_grades: parseInt(course[12].trim()),
 				withdrawals: parseInt(course[13].trim()),
 			}
+			console.log(courseObj);
 			const sameEntryIndex = congregatedEntries.findIndex((elm) => {
 				return (elm.year === courseObj.year && elm.quarter === courseObj.quarter
 					&& elm.firstName === courseObj.firstName && elm.lastName === courseObj.lastName
