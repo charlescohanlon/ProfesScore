@@ -26,9 +26,9 @@ const SearchBar: FC<SearchBarProps> = ({ placeholderText, submit }) => {
       </div>
       <input
         type="text"
-        onKeyDown={(ev: { key: any; target: any }) =>
-          ev.key === "Enter" ? submit(ev.target.value) : null
-        }
+        onKeyDown={({ key, target }) => {
+          key === "Enter" ? submit((target as HTMLInputElement).value) : null;
+        }}
         placeholder={placeholderText}
         className={
           "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white " +
