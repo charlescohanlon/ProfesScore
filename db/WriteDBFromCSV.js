@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import lineReader from "line-reader";
 import Mysql from "mysql";
-import { CONNECTING } from "ws";
 dotenv.config({ path: ".env.local" });
 
 function parseCSV() {
@@ -58,13 +57,9 @@ function writeDB(entries) {
 		}
 		entries.forEach((elm) => {
 			con.query("USE professcore;");
-			con.query(`INSERT INTO professors ('first_name', 'last_name') VALUES (${elm.firstName}, ${elm.lastName});`);
-			con.query(`INSERT INTO subject ('abbreviation') VALUES (${elm.subjectAbbr});`);
-			
-
-
-
-
+			// con.query(`INSERT IGNORE INTO professors (first_name, last_name) VALUES ('${elm.firstName}', '${elm.lastName}');`);
+			con.query(`INSERT IGNORE INTO subjects (abbr) VALUES (${elm.subjectAbbr});`);
+			// con.query(`INSERT IGNORE INTO courses (class_number, subject_id) VALUES ('${elm.courseNumber}', )`)
 
 		});
 		con.end((err) => { if (err) console.error(err); });

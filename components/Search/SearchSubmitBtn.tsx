@@ -1,6 +1,9 @@
 import React, { FC } from "react";
+interface SearchSubmitBtnProps {
+  submit: Function;
+}
 
-const SearchSubmitBtn: FC = (): JSX.Element => {
+const SearchSubmitBtn: FC<SearchSubmitBtnProps> = ({ submit }): JSX.Element => {
   return (
     <input
       type="button"

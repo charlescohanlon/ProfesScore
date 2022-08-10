@@ -47,7 +47,7 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
       <a
         className="px-0.5 py-2 "
         onClick={() => {
-          updateSelectedOption("Professor");
+          updateSelectedOption("professor");
           deselectDropdown();
         }}
       >
@@ -56,7 +56,7 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
       <a
         className="px-0.5 py-2 border-t-2 border-brandGray"
         onClick={() => {
-          updateSelectedOption("Course");
+          updateSelectedOption("course");
           deselectDropdown();
         }}
       >
@@ -65,7 +65,7 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
       <a
         className="px-0.5 py-2 border-t-2 border-brandGray"
         onClick={() => {
-          updateSelectedOption("Rating");
+          updateSelectedOption("rating");
           deselectDropdown();
         }}
       >
@@ -92,7 +92,9 @@ const ResultsSearchDropdown: FC<ResultsSearchDropdownProps> = ({
         }
         style={{ margin: "-2px" }} // to accomadate border
       >
-        <p className="hidden sm:contents">{selectedOption}</p>
+        <p className="hidden sm:contents">
+          {selectedOption.charAt(0).toUpperCase() + selectedOption.substring(1)}
+        </p>
         <div className="">
           {dropdownIsSelected ? (
             <svg

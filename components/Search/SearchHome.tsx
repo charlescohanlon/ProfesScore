@@ -3,10 +3,10 @@ import SearchForm from "./SearchForm";
 import SearchTypeTab from "./SearchTypeTab";
 import Logo from "../Logo";
 
-export type SearchType = "Professor" | "Course" | "Rating";
+export type SearchType = "professor" | "course" | "rating";
 
 const SearchHome: FC = (): JSX.Element => {
-  const [selectedOption, setSelectedOption] = useState<SearchType>("Professor");
+  const [selectedOption, setSelectedOption] = useState<SearchType>("professor");
 
   function updateSelectedOption(newOption: SearchType): void {
     setSelectedOption(newOption);
@@ -19,9 +19,9 @@ const SearchHome: FC = (): JSX.Element => {
       </div>
       <div className="flex">
         {[
-          "Professor" as SearchType,
-          "Course" as SearchType,
-          "Rating" as SearchType,
+          "professor" as SearchType,
+          "course" as SearchType,
+          "rating" as SearchType,
         ].map((option: SearchType) => (
           <SearchTypeTab
             key={option}

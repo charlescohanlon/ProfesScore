@@ -87,8 +87,8 @@ const ResultsProfessorCard: FC<ResultProfessorCardProps> = ({
           <h2 className="text-xs text-center text-brandGray">Score</h2>
           <h1
             className={
-              "-my-1 mx-2 text-center text-2xl text-green-500 " + // green-500, yellow-300, red-500
-              "md:my-0 md:mx-4 md:text-3xl "
+              "-my-1 mx-2 text-center text-xl text-green-500 " + // green-500, yellow-300, red-500
+              "md:my-0 md:mx-4 md:text-2xl "
             }
           >
             {score}

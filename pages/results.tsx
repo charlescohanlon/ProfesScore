@@ -17,17 +17,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         reject(err);
         return;
       }
-      con.query("SELECT * FROM professcore.professors;", (err: Error, result: any) => {
-        if (err) {
-          reject(err);
-          return;
+      con.query(
+        "SELECT * FROM professcore.professors;",
+        (err: Error, result: any) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          const resultAsJSON = JSON.stringify(result); // to make serializable
+          resolve(resultAsJSON);
+          con.end((err) => {
+            if (err) throw err;
+          });
         }
-        const resultAsJSON = JSON.stringify(result); // to make serializable
-        resolve(resultAsJSON);
-        con.end((err) => {
-          if (err) throw err;
-        });
-      });
+      );
     });
   });
   return {
@@ -36,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const Results: NextPage = ({ queryResults }: any): JSX.Element => {
-  useEffect(() => console.log("Result:", JSON.parse(queryResults)), []);
+  // useEffect(() => console.log("Result:", JSON.parse(queryResults)), []);
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
       <ResultsNavbar></ResultsNavbar>

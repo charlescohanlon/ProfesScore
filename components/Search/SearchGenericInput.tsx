@@ -2,10 +2,12 @@ import React, { FC } from "react";
 
 interface SearchGenericInputProps {
   placeholderText: string;
+  submit: Function;
 }
 
 const SearchGenericInput: FC<SearchGenericInputProps> = ({
   placeholderText,
+  submit,
 }): JSX.Element => {
   return (
     <input

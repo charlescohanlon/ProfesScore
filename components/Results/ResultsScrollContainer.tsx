@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { GetServerSideProps } from "next";
 import ResultsProfessorCard from "./ResultsProfessorCard";
 import ResultsCourseGroup from "./ResultsCourseGroup";
 
@@ -13,15 +14,18 @@ const ResultsScrollContainer: FC = (): JSX.Element => {
         "xl:w-6/12 "
       }
     >
-      {Array(10)
+      {/* {Array(10)
         .fill(0)
-        .map(() => {
+        .map((elm, idx) => {
           return (
-            <div className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}>
+            <div
+              key={idx}
+              className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}
+            >
               <ResultsCourseGroup></ResultsCourseGroup>
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 };

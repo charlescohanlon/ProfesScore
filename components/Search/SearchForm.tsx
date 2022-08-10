@@ -4,46 +4,66 @@ import SearchGenericInput from "./SearchGenericInput";
 import SearchSlider from "./SearchSlider";
 import SearchSubmitBtn from "./SearchSubmitBtn";
 import { SearchType } from "./SearchHome";
-
+import { useRouter } from "next/router";
 interface SearchFormProps {
   searchType: SearchType;
 }
-
+interface SearchSubmitProps {
+  submitQuery: Function;
+}
 const SearchForm: FC<SearchFormProps> = ({ searchType }): JSX.Element => {
+  const router = useRouter();
+  function submitQuery(query: string) {
+    console.log(query);
+    router.push({
+      pathname: "/results",
+      query: { type: searchType, q: query },
+    });
+  }
+
   return (
     <>
-      {searchType == "Professor" ? (
-        <ProfessorForm></ProfessorForm>
-      ) : searchType == "Course" ? (
-        <CourseForm></CourseForm>
+      {searchType == "professor" ? (
+        <ProfessorForm submitQuery={submitQuery}></ProfessorForm>
+      ) : searchType == "course" ? (
+        <CourseForm submitQuery={submitQuery}></CourseForm>
       ) : (
-        <RatingForm></RatingForm>
+        <RatingForm submitQuery={submitQuery}></RatingForm>
       )}
     </>
   );
 };
 
-const ProfessorForm: FC = (): JSX.Element => {
+const ProfessorForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
   return (
     <div className="flex justify-center">
-      <SearchBar placeholderText="Professor Name"></SearchBar>
+      <SearchBar
+        submit={submitQuery}
+        placeholderText="Professor Name"
+      ></SearchBar>
     </div>
   );
 };
 
-const CourseForm: FC = (): JSX.Element => {
+const CourseForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
   return (
     <div className="grid grid-rows-2 grid-cols-2 justify-items-center gap-3 sm:gap-5 md:gap-7 lg:gap-8">
       <div className="w-full col-span-full ">
-        <SearchBar placeholderText="Course Title"></SearchBar>
+        <SearchBar
+          submit={submitQuery}
+          placeholderText="Course Title"
+        ></SearchBar>
       </div>
-      <SearchGenericInput placeholderText="Subject (opt.)"></SearchGenericInput>
-      <SearchGenericInput placeholderText="Professor (opt.)"></SearchGenericInput>
+
+      <SearchGenericInput
+        submit={submitQuery}
+        placeholderText="Subject (opt.)"
+      ></SearchGenericInput>
     </div>
   );
 };
 
-const RatingForm: FC = (): JSX.Element => {
+const RatingForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
   const [sliderVals, setSliderVals] = useState<[string, string]>(["1", "100"]);
 
   function setLeftSliderVal(newVal: string): void {
@@ -60,7 +80,7 @@ const RatingForm: FC = (): JSX.Element => {
         sliderVals={sliderVals}
         updateSliderVals={[setLeftSliderVal, setRightSliderVal]}
       ></SearchSlider>
-      <SearchSubmitBtn></SearchSubmitBtn>
+      <SearchSubmitBtn submit={submitQuery}></SearchSubmitBtn>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const ResultsCourseGroup: FC<ResultsCourseGroupProps> = (): JSX.Element => {
         </div>
         {Array(5)
           .fill(0)
-          .map(() => {
+          .map((elm, idx) => {
             return (
               <>
                 <p
@@ -29,16 +29,9 @@ const ResultsCourseGroup: FC<ResultsCourseGroupProps> = (): JSX.Element => {
                     "h-1/2 w-full border-l-2 border-b-2 last-of-type:rounded-bl-xl border-brandAmber " +
                     "row-span-1 select-none "
                   }
+                  key={idx}
                 ></p>
-                <div
-                // className={
-                //   "ml-5 mb-3 " +
-                //   "sm:ml-6 sm:mb-4 " +
-                //   "md:ml-7 md:mb-5 " +
-                //   "lg:ml-8 lg:mb-6 " +
-                //   "xl:mb-3"
-                // }
-                >
+                <div key={elm}>
                   <ResultsProfessorCard
                     firstName="Zack"
                     lastName="Judson"
