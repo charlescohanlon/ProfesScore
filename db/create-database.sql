@@ -22,7 +22,7 @@ CREATE TABLE `subjects` (
 CREATE TABLE `courses` (
     `course_id` INT AUTO_INCREMENT,
     `subject_id` INT NOT NULL,
-    `class_number` VARCHAR(3) NOT NULL UNIQUE,
+    `class_number` VARCHAR(5) NOT NULL UNIQUE,
     PRIMARY KEY (`course_id`),
     CONSTRAINT FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

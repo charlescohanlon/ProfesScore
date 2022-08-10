@@ -11,7 +11,7 @@ function parseCSV() {
 			const course = line.split(",");
 			const courseObj = {
 				year: course[1].trim(),
-				semester: course[2].trim(),
+				quarter: course[2].trim(),
 				lastName: course[3].replace("\"", "").trim(),
 				firstName: course[4].replace("\"", "").trim(),
 				subjectAbbr: course[5].trim(),
@@ -24,7 +24,7 @@ function parseCSV() {
 				withdrawals: parseInt(course[13].trim()),
 			}
 			const sameEntryIndex = congregatedEntries.findIndex((elm) => {
-				return (elm.year === courseObj.year && elm.semester === courseObj.semester
+				return (elm.year === courseObj.year && elm.quarter === courseObj.quarter
 					&& elm.firstName === courseObj.firstName && elm.lastName === courseObj.lastName
 					&& elm.subjectAbbr === courseObj.subjectAbbr && elm.courseNumber === courseObj.courseNumber);
 			});
@@ -56,19 +56,22 @@ function writeDB(entries) {
 			return;
 		}
 		entries.forEach((elm) => {
-			con.query("USE professcore;");
-			// con.query(`INSERT IGNORE INTO professors (first_name, last_name) VALUES ('${elm.firstName}', '${elm.lastName}');`);
-			con.query(`INSERT IGNORE INTO subjects (abbr) VALUES (${elm.subjectAbbr});`);
-			// con.query(`INSERT IGNORE INTO courses (class_number, subject_id) VALUES ('${elm.courseNumber}', )`)
-
+			con.query(`USE professcore;`);
+			con.query(`INSERT IGNORE INTO professors (first_name, last_name) ` +
+				`VALUES ('${elm.firstName}', '${elm.lastName}');`);
+			con.query(`INSERT IGNORE INTO subjects (abbreviation) ` +
+				`VALUES ('${elm.subjectAbbr}');`);
+			con.query(`INSERT IGNORE INTO courses (class_number, subject_id) ` +
+				`VALUES ('${elm.courseNumber}', (SELECT subject_id FROM subjects WHERE abbreviation = '${elm.subjectAbbr}'))`);
+			con.query(`INSERT IGNORE INTO grade_distributions ` +
+				`(year, quarter, a_grades, b_grades, c_grades, d_grades, f_grades, withdrawals, professor_id, course_id) ` +
+				`VALUES ('${elm.year}', '${elm.quarter}', ${elm.a_grades}, ${elm.b_grades}, ${elm.c_grades}, ${elm.d_grades}, ` +
+				`${elm.f_grades}, ${elm.b_grades}, (SELECT professor_id FROM professors ` +
+				`WHERE first_name = '${elm.firstName}' AND last_name = '${elm.lastName}'), ` +
+				`(SELECT course_id FROM courses WHERE class_number = '${elm.courseNumber}' AND ` +
+				`subject_id = (SELECT subject_id FROM subjects WHERE abbreviation = '${elm.subjectAbbr}')))`);
 		});
 		con.end((err) => { if (err) console.error(err); });
 	});
-
 }
-
 parseCSV();
-
-
-
-

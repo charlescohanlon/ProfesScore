@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             reject(err);
             return;
           }
-          const resultAsJSON = JSON.stringify(result); // to make serializable
+          const resultAsJSON = JSON.stringify(result);
           resolve(resultAsJSON);
           con.end((err) => {
             if (err) throw err;
@@ -33,13 +33,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       );
     });
   });
+  const test = context.query;
   return {
-    props: { queryResults },
+    props: { test },
   };
 };
 
-const Results: NextPage = ({ queryResults }: any): JSX.Element => {
-  // useEffect(() => console.log("Result:", JSON.parse(queryResults)), []);
+const Results: NextPage = ({ test }: any): JSX.Element => {
+  useEffect(() => console.log("context:", test), []);
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
       <ResultsNavbar></ResultsNavbar>
