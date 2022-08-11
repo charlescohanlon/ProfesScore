@@ -23,7 +23,8 @@ CREATE TABLE `subjects` (
 CREATE TABLE `courses` (
     `course_id` INT AUTO_INCREMENT,
     `subject_id` INT NOT NULL,
-    `class_number` VARCHAR(5) NOT NULL UNIQUE,
+    `class_number` VARCHAR(5) NOT NULL,
+    UNIQUE(`subject_id`, `class_number`),
     PRIMARY KEY (`course_id`),
     CONSTRAINT FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -40,6 +41,7 @@ CREATE TABLE `grade_distributions` (
     `d_grades` INT UNSIGNED NOT NULL,
     `f_grades` INT UNSIGNED NOT NULL ,
     `withdrawals` INT UNSIGNED NOT NULL,
+    UNIQUE(`professor_id`, `course_id`, `year`, `quarter`, `a_grades`, `b_grades`, `c_grades`, `d_grades`, `f_grades`, `withdrawals`),
     PRIMARY KEY (`grade_distribution_id`),
     CONSTRAINT FOREIGN KEY (`professor_id`) REFERENCES `professors` (`professor_id`) ON UPDATE CASCADE,
     CONSTRAINT FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON UPDATE CASCADE

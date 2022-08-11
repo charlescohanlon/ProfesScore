@@ -15,9 +15,7 @@ const ProfessorForm: FC<SearchSubmitProps> = ({ submitQuery }): JSX.Element => {
     <div className="flex justify-center">
       <SearchBar
         submit={buildQuery}
-        getValue={() => {
-          setProfessorVal;
-        }}
+        getValue={setProfessorVal}
         placeholderText="Professor Name"
       ></SearchBar>
     </div>

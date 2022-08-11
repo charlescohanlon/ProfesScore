@@ -23,7 +23,6 @@ function parseCSV() {
 				f_grades: parseInt(course[12].trim()),
 				withdrawals: parseInt(course[13].trim()),
 			}
-			console.log(courseObj);
 			const sameEntryIndex = congregatedEntries.findIndex((elm) => {
 				return (elm.year === courseObj.year && elm.quarter === courseObj.quarter
 					&& elm.firstName === courseObj.firstName && elm.lastName === courseObj.lastName
@@ -64,7 +63,7 @@ function writeDB(entries) {
 				`VALUES ('${elm.subjectAbbr}');`);
 			con.query(`INSERT IGNORE INTO courses (class_number, subject_id) ` +
 				`VALUES ('${elm.courseNumber}', (SELECT subject_id FROM subjects WHERE abbreviation = '${elm.subjectAbbr}'))`);
-			con.query(`INSERT IGNORE INTO grade_distributions ` +
+			con.query(`INSERT INTO grade_distributions ` +
 				`(year, quarter, a_grades, b_grades, c_grades, d_grades, f_grades, withdrawals, professor_id, course_id) ` +
 				`VALUES ('${elm.year}', '${elm.quarter}', ${elm.a_grades}, ${elm.b_grades}, ${elm.c_grades}, ${elm.d_grades}, ` +
 				`${elm.f_grades}, ${elm.b_grades}, (SELECT professor_id FROM professors ` +

@@ -1,9 +1,14 @@
-import React, { FC } from "react";
-import { GetServerSideProps } from "next";
+import { FC } from "react";
 import ResultsProfessorCard from "./ResultsProfessorCard";
 import ResultsCourseGroup from "./ResultsCourseGroup";
 
-const ResultsScrollContainer: FC = (): JSX.Element => {
+interface ResultsScrollContainerProps {
+  searchResults: Array<Object>;
+}
+
+const ResultsScrollContainer: FC<ResultsScrollContainerProps> = ({
+  searchResults,
+}): JSX.Element => {
   return (
     <div
       className={
@@ -14,18 +19,16 @@ const ResultsScrollContainer: FC = (): JSX.Element => {
         "xl:w-6/12 "
       }
     >
-      {/* {Array(10)
-        .fill(0)
-        .map((elm, idx) => {
-          return (
-            <div
-              key={idx}
-              className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}
-            >
-              <ResultsCourseGroup></ResultsCourseGroup>
-            </div>
-          );
-        })} */}
+      {searchResults.map((elm, idx) => {
+        return (
+          <div
+            key={idx}
+            className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}
+          >
+            <ResultsProfessorCard professorObj={elm}></ResultsProfessorCard>
+          </div>
+        );
+      })}
     </div>
   );
 };

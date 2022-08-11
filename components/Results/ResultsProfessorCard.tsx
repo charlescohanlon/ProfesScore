@@ -2,23 +2,15 @@ import React, { FC } from "react";
 import Link from "next/link";
 
 interface ResultProfessorCardProps {
-  firstName: string;
-  lastName: string;
-  taughtCourses: Array<string>;
-  score: number;
-  id: number;
+  professorObj: Object;
 }
 
 const ResultsProfessorCard: FC<ResultProfessorCardProps> = ({
-  firstName,
-  lastName,
-  taughtCourses,
-  score,
-  id,
+  professorObj,
 }): JSX.Element => {
   const courseLinks: JSX.Element = (
     <h2 className={"text-xs text-brandGray font-PTSans " + "md:text-sm "}>
-      {taughtCourses.map((course) => (
+      {/* {taughtCourses.map((course) => (
         <>
           <Link href="/">
             <a key={course} className="hover:text-brandAmber" id={course}>
@@ -29,10 +21,9 @@ const ResultsProfessorCard: FC<ResultProfessorCardProps> = ({
             {", "}
           </span>
         </>
-      ))}
+      ))} */}
     </h2>
   );
-
   return (
     <div
       className={
@@ -45,7 +36,7 @@ const ResultsProfessorCard: FC<ResultProfessorCardProps> = ({
           className={
             "text-2xl m-0 text-black font-PTSans font-bold " + "md:text-2xl "
           }
-        >{`${lastName}, ${firstName}`}</h1>
+        >{`${professorObj.lastName}, ${firstName}`}</h1>
         {courseLinks}
       </div>
       <div className="flex items-center">
