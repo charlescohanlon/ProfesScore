@@ -2,6 +2,7 @@ import knex from "./KnexObj";
 import { Knex } from "knex";
 import { CourseQueryData, ProfessorQueryData } from "../types";
 import { CourseName } from "../../types";
+// test
 
 export default class SearchResultDao {
   private readonly professorResultLimit = 20;
