@@ -1,0 +1,1 @@
+export { getResultsForQuery } from "./getResultsForQuery";
