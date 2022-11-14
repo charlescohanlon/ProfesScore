@@ -24,14 +24,12 @@ const DisplayContainer = ({
   useEffect(() => {
     const isMounting = searchResults !== lastResults.current;
     if (isMounting) {
-      console.log("mounting...");
       lastResults.current = searchResults;
       setCurrentResults(searchResults);
       setPageNum(1);
       setNoMore(false);
     }
   });
-  console.log("# results", currentResults.length);
 
   const observer = useRef<IntersectionObserver>();
   const [error, setError] = useState<boolean>(false);
@@ -39,21 +37,23 @@ const DisplayContainer = ({
   const [noMore, setNoMore] = useState<boolean>(false);
   function handleObserver(ref: HTMLDivElement) {
     if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver(async (entries) => {
-      if (!entries[0].isIntersecting || isLoading || noMore) return;
-      setIsLoading(true);
-      console.log("loading...");
-      const url = `/api/load-more?page=${pageNum}&` + queryToParamStr(query);
-      const res = await fetch(url);
-      const resJSON = await res.json();
-      const results = resJSON.results;
-      if (results.length === 0) setNoMore(true);
-      else {
-        setCurrentResults([...currentResults, ...results]);
-        setPageNum(pageNum + 1);
-      }
-      setIsLoading(false);
-    });
+    observer.current = new IntersectionObserver(
+      async (entries) => {
+        if (!entries[0].isIntersecting || isLoading || noMore) return;
+        setIsLoading(true);
+        const url = `/api/load-more?page=${pageNum}&` + queryToParamStr(query);
+        const res = await fetch(url);
+        const resJSON = await res.json();
+        const results = resJSON.results;
+        if (results.length === 0) setNoMore(true);
+        else {
+          setCurrentResults([...currentResults, ...results]);
+          setPageNum(pageNum + 1);
+        }
+        setIsLoading(false);
+      },
+      { rootMargin: "100px 0px 0px 0px" }
+    );
     if (ref) observer.current.observe(ref);
   }
 
