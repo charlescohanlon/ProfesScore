@@ -13,6 +13,7 @@
     "test:unit": "jest --verbose"
   },
   "dependencies": {
+    "@vercel/analytics": "^0.1.4",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
     "dotenv": "^16.0.3",

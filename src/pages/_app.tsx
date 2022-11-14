@@ -1,5 +1,6 @@
 import "../frontend/styles/global.css";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 
 function ProfesScore({ Component, pageProps }: AppProps) {
@@ -9,8 +10,8 @@ function ProfesScore({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <title>ProfesScore</title>
       </Head>
-
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
