@@ -61,7 +61,7 @@ const About: NextPage = (): JSX.Element => {
           {"The grade data is from "}
           <ContainerLink href={tcLink}>Transfer Camp</ContainerLink>
           {" and the Quality Rating data is from "}
-          <ContainerLink href={rmpLink}>Rate My Professors</ContainerLink>.
+          <ContainerLink href={rmpLink}>Rate My Professors</ContainerLink>
           {". The web app was inspired by a project by Michael Lavory found "}
           <ContainerLink href={michaelGithubLink}>here</ContainerLink>.
         </ContainerText>
