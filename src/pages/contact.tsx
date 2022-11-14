@@ -24,7 +24,7 @@ const Contact: NextPage = (): JSX.Element => {
           {"Github: "}
           <ContainerLink href="https://github.com/charlescohanlon"></ContainerLink>
           {"\nLinkedin: "}
-          <ContainerLink href="www.linkedin.com/in/charlescohanlon"></ContainerLink>
+          <ContainerLink href="https://www.linkedin.com/in/charlescohanlon"></ContainerLink>
         </ContainerText>
         <ContainerText title={"Michael Lavery"}>
           {"Github: "}
