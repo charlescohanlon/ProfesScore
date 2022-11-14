@@ -1,5 +1,4 @@
 import "../frontend/styles/global.css";
-export { reportWebVitals } from "next-axiom";
 import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
