@@ -34,7 +34,7 @@ const Contact: NextPage = (): JSX.Element => {
         </ContainerText>
         <ContainerText title={"Sulphine Susie Odio"}>
           {"Linkedin: "}
-          <ContainerLink href="www.linkedin.com/in/michael-lavery-446510209"></ContainerLink>
+          <ContainerLink href="https://www.linkedin.com/in/michael-lavery-446510209"></ContainerLink>{" "}
           {"\nPersonal Site: "}
           <ContainerLink href="https://ssodio.github.io/"></ContainerLink>
         </ContainerText>
