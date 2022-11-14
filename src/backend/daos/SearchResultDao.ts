@@ -5,7 +5,7 @@ import { CourseName } from "../../types";
 
 export default class SearchResultDao {
   private readonly professorResultLimit = 20;
-  private readonly courseResultLimit = 2;
+  private readonly courseResultLimit = 1;
   private queryBuilder = knex("preview_metrics").select(
     knex.ref("professors.professor_id").as("pid"),
     knex.ref("first_name").as("firstName"),
