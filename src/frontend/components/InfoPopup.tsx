@@ -1,4 +1,6 @@
-import { useState } from "react";
+import clsx from "clsx";
+import { useContext, useState } from "react";
+import { InfoPopupContext } from "../../pages/_app";
 
 interface InfoPopupProps {
   extraClasses?: string;
@@ -11,26 +13,52 @@ const InfoPopup = ({
   children,
   isUpsideDown,
 }: InfoPopupProps): JSX.Element => {
-  const [isShowing, setIsShowing] = useState<boolean>(true);
+  const { isShowing, hide } = useContext(InfoPopupContext);
   return (
     <div
-      className={
-        `${
-          isShowing ? "" : "hidden"
-        } static z-40 h-fit overflow-visible flex flex-col items-center ` +
+      className={clsx(
+        isShowing ? "" : "hidden",
+        "static",
+        "z-40",
+        "h-fit",
+        "overflow-visible",
+        "flex",
+        "flex-col",
+        "items-center",
         extraClasses
-      }
+      )}
     >
       <div
-        className={
-          "static z-20 w-full p-4 bg-white border-2 border-brandAmber text-brandAmber rounded-lg " +
-          "font-bold text-sm sm:text-base antialiased md:p-5 "
-        }
+        className={clsx(
+          "static",
+          "z-20",
+          "w-full",
+          "p-3.5",
+          "md:p-3",
+          "bg-white",
+          "border-2",
+          "border-brandAmber",
+          "text-brandAmber",
+          "rounded-lg",
+          "font-bold",
+          "text-sm",
+          "sm:text-base",
+          "antialiased"
+        )}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          onClick={() => setIsShowing(false)}
-          className="absolute cursor-pointer top-1 right-1 h-5 w-5 text-brandAmber hover:scale-125 "
+          onClick={() => hide()}
+          className={clsx(
+            "absolute",
+            "cursor-pointer",
+            "top-1",
+            "right-1",
+            "h-5",
+            "w-5",
+            "text-brandAmber",
+            "hover:scale-125"
+          )}
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -43,9 +71,15 @@ const InfoPopup = ({
         {children}
       </div>
       <div
-        className={`absolute ${
-          isUpsideDown ? "-top-2" : "-bottom-2"
-        } h-5 w-5 rotate-45 z-10 bg-brandAmber`}
+        className={clsx(
+          "absolute",
+          isUpsideDown ? "-top-2" : "-bottom-2",
+          "h-5",
+          "w-5",
+          "rotate-45",
+          "z-10",
+          "bg-brandAmber"
+        )}
       ></div>
     </div>
   );

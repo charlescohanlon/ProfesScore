@@ -108,7 +108,7 @@ const ResultsProfessorCard = ({
       )}
       <CardPreviewGrid
         ratioState={ratioState}
-        showInfo={showInfo}
+        isLast={showInfo}
         numGradeState={numGradeState}
         preview={profPreview}
       ></CardPreviewGrid>
