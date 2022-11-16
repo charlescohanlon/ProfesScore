@@ -1,9 +1,12 @@
+import clsx from "clsx";
+import { useContext } from "react";
+import { InfoPopupContext } from "../../../pages/_app";
 import { ProfessorPreview } from "../../../types";
 import InfoPopup from "../InfoPopup";
 
 interface CardPreviewGridProps {
   preview: ProfessorPreview;
-  showInfo: boolean;
+  isLast: boolean;
   ratioState: { displayARatio: boolean; toggleARatio(): void };
   numGradeState: {
     collapseNumGrades: boolean;
@@ -20,16 +23,16 @@ const CardPreviewGrid = ({
     displayRating,
     toggleDisplayRating: toggleDisplayNumGrades,
   },
-  showInfo,
+  isLast,
 }: CardPreviewGridProps): JSX.Element => {
+  const { isShowing } = useContext(InfoPopupContext);
+  const showInfo = isShowing && isLast;
+
   function colorScore(value: number): string {
     if (value < 33.33) return " font-bold text-red-600 ";
     if (value < 66.66) return " font-bold text-yellow-400 ";
     return " font-bold text-green-500 ";
   }
-
-  const popupPositionClasses =
-    "absolute top-8 sm:top-8 md:top-10 lg:top-[2.625rem] xl:top-11";
   const hoverAndActiveClasses = "hover:bg-gray-50 ";
 
   const aRatioCol: [JSX.Element, JSX.Element] = [
@@ -62,7 +65,16 @@ const CardPreviewGrid = ({
     >
       {displayARatio ? aRatio : passingRatio}%
       {showInfo && !collapseNumGrades && (
-        <div className={popupPositionClasses}>
+        <div
+          className={clsx(
+            "absolute",
+            "top-8",
+            "sm:top-8",
+            "md:top-10",
+            "lg:top-[2.625rem]",
+            "xl:top-11"
+          )}
+        >
           <InfoPopup extraClasses="w-28 sm:w-36 text-center " isUpsideDown>
             Click to see the ratio for passing grades
           </InfoPopup>{" "}
@@ -125,13 +137,31 @@ const CardPreviewGrid = ({
     </h2>,
     <h1
       key={"ratingValue"}
-      className={
-        "m-0 p-0 flex justify-center items-center " +
-        "text-sm md:text-base xl:text-lg " +
-        "border-r-2 border-gray-300 "
-      }
+      className={clsx(
+        "relative",
+        "m-0",
+        "p-0",
+        "flex",
+        "justify-center",
+        "items-center",
+        "text-sm",
+        "md:text-base",
+        "xl:text-lg",
+        "border-r-2",
+        "border-gray-300"
+      )}
     >
       {ratingColVal}
+      {showInfo && collapseNumGrades && (
+        <div className={clsx("absolute", "top-8")}>
+          <InfoPopup
+            extraClasses={clsx("w-28", "sm:w-36", "text-center")}
+            isUpsideDown
+          >
+            Click to see the total number of grades given
+          </InfoPopup>{" "}
+        </div>
+      )}
     </h1>,
   ];
 
@@ -162,11 +192,13 @@ const CardPreviewGrid = ({
   if (collapseNumGrades) columns.splice(1, 1);
   return (
     <div
-      className={
-        `w-7/12 grid ${collapseNumGrades ? "grid-cols-3" : "grid-cols-4"}  ` +
-        "xs:w-6/12 " +
+      className={clsx(
+        "w-7/12",
+        "grid",
+        collapseNumGrades ? "grid-cols-3" : "grid-cols-4",
+        "xs:w-6/12",
         "sm:w-5/12"
-      }
+      )}
     >
       {columns.map((title) => title[0])}
       {columns.map((value) => value[1])}

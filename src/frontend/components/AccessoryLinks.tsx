@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Link from "next/link";
 
 interface NavbarLinksProps {
@@ -8,14 +9,30 @@ const NavbarLinks = ({ extraClasses }: NavbarLinksProps): JSX.Element => {
   const commonClasses = "px-1 xs:px-4 sm:px-2 xl:mx-4 hover:scale-105";
   return (
     <div
-      className={
-        "absolute top-0 right-0 h-10 xs:h-14 mt-2 text-lg text-center font-Barlow flex items-center " +
-        "sm:h-20 sm:mt-0 sm:text-sm " +
-        "md:h-24 md:text-base " +
-        "lg:h-28 lg:text-lg lg:right-2 " +
-        "xl:text-xl xl:right-2 " +
+      className={clsx(
+        "absolute",
+        "top-0",
+        "right-0",
+        "h-10",
+        "xs:h-14",
+        "mt-2",
+        "text-lg",
+        "text-center",
+        "font-Barlow",
+        "flex",
+        "items-center",
+        "sm:h-20",
+        "sm:mt-0",
+        "sm:text-sm",
+        "md:h-24",
+        "md:text-base",
+        "lg:h-28",
+        "lg:text-lg",
+        "lg:right-2",
+        "xl:text-xl",
+        "xl:right-2",
         extraClasses
-      }
+      )}
     >
       <Link href="/about">
         <a href="" className={commonClasses}>

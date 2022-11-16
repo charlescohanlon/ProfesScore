@@ -3,6 +3,7 @@ import SearchForm from "../SearchForm";
 import Logo from "../Logo";
 import { SearchType } from "../../../types";
 import { capitalize1stLetter } from "../../utils";
+import clsx from "clsx";
 
 const SearchHome = (): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<SearchType>("professor");
@@ -64,15 +65,28 @@ const SearchTypeTab = ({
 }: FormTypeTabsProps): JSX.Element => {
   return (
     <button
-      className={
-        `${
-          isSelected
-            ? "bg-brandAmber text-white text "
-            : "bg-white text-brandAmber opacity-75 "
-        }` +
-        "w-1/3 px-2 py-1 rounded-t-lg border-4 border-spacing-0 border-brandAmber text-center select-none " +
-        "font-Barlow font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl cursor-pointer"
-      }
+      className={clsx(
+        isSelected
+          ? "bg-brandAmber text-white text "
+          : "bg-white text-brandAmber opacity-75 ",
+        "w-1/3",
+        "px-2",
+        "py-1",
+        "rounded-t-lg",
+        "border-4",
+        "border-spacing-0",
+        "border-brandAmber",
+        "text-center",
+        "select-none",
+        "font-Barlow",
+        "font-bold",
+        "text-sm",
+        "sm:text-base",
+        "md:text-lg",
+        "lg:text-xl",
+        "xl:text-2xl",
+        "cursor-pointer"
+      )}
       onClick={() => updateSelectedOption(typeText)}
     >
       <p className={isSelected ? "" : "hover:scale-105"}>
