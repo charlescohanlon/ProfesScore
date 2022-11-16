@@ -21,19 +21,19 @@ const Contact: NextPage = (): JSX.Element => {
           {" designed the logo and inspired the user interface. "}
         </ContainerText>
         <ContainerText title={"Charles O'Hanlon"}>
-          {"Github: "}
+          {"GitHub: "}
           <ContainerLink href="https://github.com/charlescohanlon"></ContainerLink>
-          {"\nLinkedin: "}
+          {"\nLinkedIn: "}
           <ContainerLink href="https://www.linkedin.com/in/charlescohanlon"></ContainerLink>
         </ContainerText>
         <ContainerText title={"Michael Lavery"}>
-          {"Github: "}
+          {"GitHub: "}
           <ContainerLink href="https://github.com/thavens"></ContainerLink>
-          {"\nLinkedin: "}
+          {"\nLinkedIn: "}
           <ContainerLink href="https://www.linkedin.com/in/michael-lavery-446510209/"></ContainerLink>
         </ContainerText>
         <ContainerText title={"Sulphine Susie Odio"}>
-          {"Linkedin: "}
+          {"LinkedIn: "}
           <ContainerLink href="https://www.linkedin.com/in/michael-lavery-446510209"></ContainerLink>{" "}
           {"\nPersonal Site: "}
           <ContainerLink href="https://ssodio.github.io/"></ContainerLink>
