@@ -35,7 +35,7 @@ const Results: NextPage = ({
   }
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
-      <Navbar></Navbar>
+      <Navbar initialStateQuery={query}></Navbar>
       <DisplayContainer
         query={query}
         searchResults={results}

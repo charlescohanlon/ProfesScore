@@ -1,13 +1,19 @@
 import { useState } from "react";
 import Link from "next/link";
-import { SearchType } from "../../../types";
+import { SearchQuery, SearchType } from "../../../types";
 import DropDownMenu from "./DropDownMenu";
 import SearchForm from "../SearchForm";
 import Logo from "../Logo";
 import NavbarLinks from "../AccessoryLinks";
 
-const Navbar = (): JSX.Element => {
-  const [selectedOption, setSelectedOption] = useState<SearchType>("professor");
+interface NavbarProps {
+  initialStateQuery: SearchQuery;
+}
+
+const Navbar = ({ initialStateQuery }: NavbarProps): JSX.Element => {
+  const [selectedOption, setSelectedOption] = useState<SearchType>(
+    initialStateQuery.type
+  );
 
   function updateSelectedOption(newOption: SearchType): void {
     setSelectedOption(newOption);
