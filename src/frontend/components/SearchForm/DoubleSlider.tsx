@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useState } from "react";
 
 interface SliderProps {
@@ -66,7 +67,7 @@ const SearchSlider = ({
         />
         <input
           type="range"
-          className={"h-0 z-10 " + sliderClasses}
+          className={clsx("h-0", "z-10", sliderClasses)}
           min={1}
           max={100}
           value={sliderVals[1]}
@@ -94,11 +95,11 @@ const SliderInput = ({ value, updateVal }: SliderInputProps): JSX.Element => {
     <input
       type="text"
       value={value > 100 ? 100 : value}
-      onChange={({ target: { value } }) =>
-        value === "" || (/^[0-9\b]+$/.test(value) && value.length <= 3) // uses regex to enforce digit-only input
+      onChange={({ target: { value } }) => {
+        value !== "" && /^[0-9\b]+$/.test(value) && value.length <= 3 // uses regex to enforce digit-only input
           ? updateVal(parseInt(value))
-          : null
-      }
+          : null;
+      }}
       className={
         "w-14 sm:w-14 lg:w-20 py-2 rounded-full font-Barlow text-brandGray bg-white text-center " +
         "hover:shadow-inputShadow focus:outline-none text-lg sm:text-sm md:text-base lg:text-lg xl:text-xl"
