@@ -7,12 +7,12 @@ import Logo from "../Logo";
 import NavbarLinks from "../AccessoryLinks";
 
 interface NavbarProps {
-  initialStateQuery: SearchQuery;
+  initialStateQuery?: SearchQuery;
 }
 
 const Navbar = ({ initialStateQuery }: NavbarProps): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<SearchType>(
-    initialStateQuery.type
+    initialStateQuery?.type ? initialStateQuery.type : "professor"
   );
 
   function updateSelectedOption(newOption: SearchType): void {
