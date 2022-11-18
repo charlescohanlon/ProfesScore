@@ -35,6 +35,7 @@ const DisplayContainer = ({
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [noMore, setNoMore] = useState<boolean>(false);
+
   function handleObserver(ref: HTMLDivElement) {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(
