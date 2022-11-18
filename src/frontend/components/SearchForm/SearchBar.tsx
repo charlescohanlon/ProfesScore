@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
 interface SearchBarProps {
   placeholderText: string;
   value: string;
@@ -13,6 +16,22 @@ const SearchBar = ({
   submit,
   clearOther,
 }: SearchBarProps) => {
+  const router = useRouter();
+  const { pq, cq, dq } = router.query;
+
+  useEffect(() => {
+    if (pq) {
+      // Professor Query
+      setValue(pq as string);
+    } else if (cq) {
+      // Course Query
+      setValue(cq as string);
+    } else if (dq) {
+      // Department Query
+      setValue(dq as string);
+    }
+  }, []);
+
   return (
     <div className="relative w-full rounded-full hover:shadow-inputShadow">
       <div className="absolute h-full w-fit flex justify-center items-center ml-4 lg:ml-3 lg:w-fit">
