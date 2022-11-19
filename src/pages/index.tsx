@@ -1,7 +1,6 @@
 import SearchHome from "../frontend/components/SearchHome";
 import NavbarLinks from "../frontend/components/AccessoryLinks";
 import InfoPopup from "../frontend/components/InfoPopup";
-import { useState } from "react";
 import { ContainerLink } from "../frontend/components/DisplayContainer";
 import { NextPage } from "next";
 
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
               "2xl:w-5/12"
             }
           >
-            <SearchHome></SearchHome>
+            <SearchHome />
           </div>
         </div>
         <div
