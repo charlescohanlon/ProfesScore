@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchType } from "../../../types";
 import { SearchQuery } from "../../../types";
 import SearchBar from "./SearchBar";
@@ -17,12 +17,37 @@ const SearchForm = ({
   showOrOnHover,
 }: SearchFormProps): JSX.Element => {
   const router = useRouter();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   function submitQuery(query: SearchQuery) {
     router.push({
       pathname: "/results",
       query: { ...query },
     });
   }
+
+  function handleAnimationTransition() {
+    setIsTransitioning((prev) => !prev);
+  }
+
+  function handleAnimationTransitionEnd() {
+    setIsTransitioning(false);
+  }
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", handleAnimationTransition);
+    router.events.on("routeChangeComplete", handleAnimationTransition);
+    router.events.on("routeChangeError", handleAnimationTransitionEnd);
+
+    return () => {
+      router.events.off("routeChangeStart", handleAnimationTransition);
+      router.events.off("routeChangeComplete", handleAnimationTransition);
+      router.events.off("routeChangeError", handleAnimationTransitionEnd);
+    };
+  }, [router]);
+
+  if (isTransitioning) return <p>Loading...</p>;
+
   switch (searchType) {
     case "professor":
       return <ProfessorForm submitQuery={submitQuery}></ProfessorForm>;
