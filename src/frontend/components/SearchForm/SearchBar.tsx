@@ -30,7 +30,7 @@ const SearchBar = ({
       // Department Query
       setValue(dq as string);
     }
-  }, []);
+  }, [cq, dq, pq, setValue]);
 
   return (
     <div className="relative w-full rounded-full hover:shadow-inputShadow">
@@ -57,7 +57,6 @@ const SearchBar = ({
         onKeyDown={({ key }) => {
           if (key === "Enter") {
             submit();
-            setValue("");
           }
           if (clearOther) clearOther(placeholderText);
         }}

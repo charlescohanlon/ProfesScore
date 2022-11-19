@@ -29,7 +29,7 @@ const DisplayContainer = ({
       setPageNum(1);
       setNoMore(false);
     }
-  });
+  }, [setCurrentResults, searchResults]);
 
   const observer = useRef<IntersectionObserver>();
   const [error, setError] = useState<boolean>(false);
@@ -66,7 +66,7 @@ const DisplayContainer = ({
     window.addEventListener("resize", () =>
       setCollapseNumGrades(window.innerWidth < collapseAtWidth)
     );
-  }, []);
+  }, [searchResults]);
 
   function toggleARatio() {
     setDisplayARatio(!displayARatio);
@@ -76,13 +76,21 @@ const DisplayContainer = ({
     setDisplayRating(!displayRating);
   }
 
-  if (error) {
+  if (error)
     return (
       <ResultScrollView>
         <Message>There was an error processing your request.</Message>
       </ResultScrollView>
     );
-  } else if (searchResults?.length === 0) {
+
+  if (isLoading)
+    return (
+      <ResultScrollView>
+        <Message>Loading...</Message>
+      </ResultScrollView>
+    );
+
+  if (searchResults?.length === 0) {
     return (
       <ResultScrollView>
         <Message>
@@ -131,7 +139,6 @@ const DisplayContainer = ({
           )}
         </div>
       ))}
-      {isLoading && <Message>Loading...</Message>}
     </ResultScrollView>
   );
 };
