@@ -83,6 +83,13 @@ const DisplayContainer = ({
       </ResultScrollView>
     );
 
+  if (isLoading)
+    return (
+      <ResultScrollView>
+        <Message>Loading...</Message>
+      </ResultScrollView>
+    );
+
   if (searchResults?.length === 0) {
     return (
       <ResultScrollView>
@@ -93,53 +100,45 @@ const DisplayContainer = ({
     );
   }
 
-  const loadingMessage = (
-    <div className="pb-3">
-      <Message>Loading...</Message>
-    </div>
-  );
-
   return (
     <ResultScrollView>
-      {currentResults
-        .map((elm, idx) => (
-          <div
-            key={idx}
-            className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}
-          >
-            {isProfessorPreview(elm) ? (
-              <ProfessorCard
-                ratioState={{ displayARatio, toggleARatio }}
-                numGradeState={{
-                  collapseNumGrades,
-                  displayRating,
-                  toggleDisplayRating,
-                }}
-                profPreview={elm}
-                deptWide={true}
-                showInfo={idx === 0}
-                handleObserver={
-                  idx === currentResults.length - 1 ? handleObserver : undefined
-                }
-              ></ProfessorCard>
-            ) : (
-              <CourseGroup
-                ratioState={{ displayARatio, toggleARatio }}
-                numGradeState={{
-                  collapseNumGrades,
-                  displayRating,
-                  toggleDisplayRating,
-                }}
-                courseRes={elm}
-                isFirstGroup={idx === 0}
-                handleObserver={
-                  idx === currentResults.length - 1 ? handleObserver : undefined
-                }
-              ></CourseGroup>
-            )}
-          </div>
-        ))
-        .concat(isLoading ? loadingMessage : <></>)}
+      {currentResults.map((elm, idx) => (
+        <div
+          key={idx}
+          className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}
+        >
+          {isProfessorPreview(elm) ? (
+            <ProfessorCard
+              ratioState={{ displayARatio, toggleARatio }}
+              numGradeState={{
+                collapseNumGrades,
+                displayRating,
+                toggleDisplayRating,
+              }}
+              profPreview={elm}
+              deptWide={true}
+              showInfo={idx === 0}
+              handleObserver={
+                idx === currentResults.length - 1 ? handleObserver : undefined
+              }
+            ></ProfessorCard>
+          ) : (
+            <CourseGroup
+              ratioState={{ displayARatio, toggleARatio }}
+              numGradeState={{
+                collapseNumGrades,
+                displayRating,
+                toggleDisplayRating,
+              }}
+              courseRes={elm}
+              isFirstGroup={idx === 0}
+              handleObserver={
+                idx === currentResults.length - 1 ? handleObserver : undefined
+              }
+            ></CourseGroup>
+          )}
+        </div>
+      ))}
     </ResultScrollView>
   );
 };
