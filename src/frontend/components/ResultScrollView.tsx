@@ -1,6 +1,6 @@
 import clsx from "clsx";
 interface ResultScrollContainerProps {
-  children: JSX.Element | Array<JSX.Element | string>;
+  children: JSX.Element | JSX.Element[];
 }
 
 const ResultScrollView = ({
