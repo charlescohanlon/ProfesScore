@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-interface SearchBarProps {
+interface Props {
   placeholderText: string;
   value: string;
   setValue(value: string): void;
@@ -9,13 +9,13 @@ interface SearchBarProps {
   clearOther?(text: string): void;
 }
 
-const SearchBar = ({
+export default function SearchBar({
   placeholderText,
   value,
   setValue,
   submit,
   clearOther,
-}: SearchBarProps) => {
+}: Props) {
   const router = useRouter();
   const { pq, cq, dq } = router.query;
 
@@ -35,7 +35,7 @@ const SearchBar = ({
   return (
     <div className="relative w-full rounded-full hover:shadow-inputShadow">
       <div className="absolute h-full w-fit flex justify-center items-center ml-4 lg:ml-3 lg:w-fit">
-        <button onClick={() => submit()}>
+        <button onClick={submit}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="text-brandGray h-4 lg:h-6 lg:w-6 "
@@ -70,6 +70,4 @@ const SearchBar = ({
       />
     </div>
   );
-};
-
-export default SearchBar;
+}
