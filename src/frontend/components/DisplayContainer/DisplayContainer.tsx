@@ -131,7 +131,6 @@ const DisplayContainer = ({
               }
             ></CourseGroup>
           )}
-
           {isLoading && (
             <div className="pb-3">
               <Message>Loading...</Message>
