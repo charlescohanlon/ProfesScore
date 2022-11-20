@@ -12,6 +12,10 @@ interface SearchFormProps {
   showOrOnHover?: boolean;
 }
 
+/**
+ * TODO: Implement skeleton loaders for different search bar types.
+ * https://github.com/charlescohanlon/ProfesScore/issues/20
+ */
 const SearchForm = ({
   searchType,
   showOrOnHover,
@@ -26,6 +30,7 @@ const SearchForm = ({
     });
   }
 
+  // used to notify component of loading state for animations
   function handleAnimationTransition() {
     setIsTransitioning(true);
   }
@@ -35,10 +40,12 @@ const SearchForm = ({
   }
 
   useEffect(() => {
+    // attaching animation handlers for router transition events.
     router.events.on("routeChangeStart", handleAnimationTransition);
     router.events.on("routeChangeComplete", handleAnimationTransitionEnd);
     router.events.on("routeChangeError", handleAnimationTransitionEnd);
 
+    // removing animation/loading handlers in cleanup function.
     return () => {
       router.events.off("routeChangeStart", handleAnimationTransition);
       router.events.off("routeChangeComplete", handleAnimationTransitionEnd);
