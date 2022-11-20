@@ -18,7 +18,7 @@ const About: NextPage = (): JSX.Element => {
       <Navbar></Navbar>
       <ResultScrollView>
         <h6 className="mb-3 text-sm text-center text-gray-500">
-          Note: This is the alpha release of ProfesScore version 0.1.0. The site
+          Note: This is the alpha release of ProfesScore version 1.0.0. The site
           may be unstable.
         </h6>
         <ContainerText
@@ -35,12 +35,11 @@ const About: NextPage = (): JSX.Element => {
           pandemic, but it&apos;s all we have.
         </ContainerText>
         <ContainerText title={"By Professor"}>
-          When you search by professor, the data shown is
-          department-wide. The ratio and score are from grade data from every
-          class taught by that professor. This is best for estimating how a
-          professor will perform teaching a course they&apos;ve never taught
-          before, or for getting a general feel for what kind of professor they
-          are.
+          When you search by professor, the data shown is department-wide. The
+          ratio and score are from grade data from every class taught by that
+          professor. This is best for estimating how a professor will perform
+          teaching a course they&apos;ve never taught before, or for getting a
+          general feel for what kind of professor they are.
         </ContainerText>
         <ContainerText title={"By Course"}>
           When you search by course, the data shown for each professor are
@@ -52,10 +51,10 @@ const About: NextPage = (): JSX.Element => {
           whose scores fall between the input range.
         </ContainerText>
         <ContainerText title={"The Score"}>
-          The overall score is a comprehensive metric that considers the A&apos;s
-          grade ratio, quality rating, total number of grades, the level of
-          difficulty, &quot;the would take again&quot; percentage, and the
-          number of ratings (from ratemyprofessors).
+          The overall score is a comprehensive metric that considers the
+          A&apos;s grade ratio, quality rating, total number of grades, the
+          level of difficulty, &quot;the would take again&quot; percentage, and
+          the number of ratings (from ratemyprofessors).
         </ContainerText>
         <ContainerText>
           {"The grade data is from "}
