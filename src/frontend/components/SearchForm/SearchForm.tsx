@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchType } from "../../../types";
 import { SearchQuery } from "../../../types";
 import SearchBar from "./SearchBar";
@@ -6,35 +6,89 @@ import GenericInput from "./GenericInput";
 import DoubleSlider from "./DoubleSlider";
 import SubmitButton from "./SubmitButton";
 import { useRouter } from "next/router";
+import clsx from "clsx";
 
 interface SearchFormProps {
   searchType: SearchType;
   showOrOnHover?: boolean;
 }
 
+/**
+ * TODO: Implement skeleton loaders for different search bar types.
+ * https://github.com/charlescohanlon/ProfesScore/issues/20
+ */
 const SearchForm = ({
   searchType,
   showOrOnHover,
 }: SearchFormProps): JSX.Element => {
   const router = useRouter();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   function submitQuery(query: SearchQuery) {
     router.push({
       pathname: "/results",
       query: { ...query },
     });
   }
+
+  // used to notify component of loading state for animations
+  function handleAnimationTransition() {
+    setIsTransitioning(true);
+  }
+
+  function handleAnimationTransitionEnd() {
+    setIsTransitioning(false);
+  }
+
+  useEffect(() => {
+    // attaching animation handlers for router transition events.
+    router.events.on("routeChangeStart", handleAnimationTransition);
+    router.events.on("routeChangeComplete", handleAnimationTransitionEnd);
+    router.events.on("routeChangeError", handleAnimationTransitionEnd);
+
+    // removing animation/loading handlers in cleanup function.
+    return () => {
+      router.events.off("routeChangeStart", handleAnimationTransition);
+      router.events.off("routeChangeComplete", handleAnimationTransitionEnd);
+      router.events.off("routeChangeError", handleAnimationTransitionEnd);
+    };
+  }, [router]);
+
+  if (isTransitioning)
+    return (
+      <p
+        className={clsx(
+          "w-full",
+          "py-2",
+          "text-center",
+          "rounded-full",
+          "font-Barlow",
+          "text-brandGray",
+          "box-content",
+          "bg-orange-300",
+          "-m-[2px]",
+          "border-2",
+          "border-brandGray",
+          "text-lg",
+          "sm:text-sm",
+          "md:text-base",
+          "lg:text-lg",
+          "xl:text-xl"
+        )}
+      >
+        Loading...
+      </p>
+    );
+
   switch (searchType) {
     case "professor":
-      return <ProfessorForm submitQuery={submitQuery}></ProfessorForm>;
+      return <ProfessorForm submitQuery={submitQuery} />;
     case "course":
       return (
-        <CourseForm
-          submitQuery={submitQuery}
-          showOrOnHover={showOrOnHover}
-        ></CourseForm>
+        <CourseForm submitQuery={submitQuery} showOrOnHover={showOrOnHover} />
       );
     default:
-      return <ScoreForm submitQuery={submitQuery}></ScoreForm>;
+      return <ScoreForm submitQuery={submitQuery} />;
   }
 };
 

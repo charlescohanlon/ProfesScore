@@ -5,6 +5,7 @@ import { isProfessorPreview, queryToParamStr } from "../../utils";
 import ResultScrollView from "../ResultScrollView";
 import { Previews, SearchQuery } from "../../../types";
 import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
 interface DisplayContainerProps {
   query: SearchQuery;
@@ -18,9 +19,9 @@ const DisplayContainer = ({
   const [displayARatio, setDisplayARatio] = useState<boolean>(true);
   const [displayRating, setDisplayRating] = useState<boolean>(true);
 
-  const lastResults = useRef<Previews>();
   const [currentResults, setCurrentResults] = useState<Previews>([]);
   const [pageNum, setPageNum] = useState<number>(1);
+  const lastResults = useRef<Previews>();
   useEffect(() => {
     const isMounting = searchResults !== lastResults.current;
     if (isMounting) {
@@ -105,7 +106,7 @@ const DisplayContainer = ({
       {currentResults.map((elm, idx) => (
         <div
           key={idx}
-          className={"mb-4 " + "sm:mb-5 " + "md:mb-6 " + "lg:mb-7"}
+          className={clsx("mb-4", "sm:mb-5", "md:mb-6", "lg:mb-7")}
         >
           {isProfessorPreview(elm) ? (
             <ProfessorCard
