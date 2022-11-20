@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -33,12 +34,31 @@ export default function SearchBar({
   }, [cq, dq, pq, setValue]);
 
   return (
-    <div className="relative w-full rounded-full hover:shadow-inputShadow">
-      <div className="absolute h-full w-fit flex justify-center items-center ml-4 lg:ml-3 lg:w-fit">
+    <div
+      className={clsx(
+        "relative",
+        "w-full",
+        "rounded-full",
+        "hover:shadow-inputShadow"
+      )}
+    >
+      <div
+        className={clsx(
+          "absolute",
+          "h-full",
+          "w-fit",
+          "flex",
+          "justify-center",
+          "items-center",
+          "ml-4",
+          "lg:ml-3",
+          "lg:w-fit"
+        )}
+      >
         <button onClick={submit}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="text-brandGray h-4 lg:h-6 lg:w-6 "
+            className={clsx("text-brandGray", "h-4", "lg:h-6", "lg:w-6")}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -63,10 +83,22 @@ export default function SearchBar({
         value={value}
         onChange={({ target }) => setValue((target as HTMLInputElement).value)}
         placeholder={placeholderText}
-        className={
-          "w-full pl-10 pr-5 py-2 rounded-full font-Barlow text-brandGray bg-white " +
-          "focus:outline-none text-lg sm:text-sm md:text-base lg:text-lg xl:text-xl"
-        }
+        className={clsx(
+          "w-full",
+          "pl-10",
+          "pr-5",
+          "py-2",
+          "rounded-full",
+          "font-Barlow",
+          "text-brandGray",
+          "bg-white",
+          "focus:outline-none",
+          "text-lg",
+          "sm:text-sm",
+          "md:text-base",
+          "lg:text-lg",
+          "xl:text-xl"
+        )}
       />
     </div>
   );

@@ -6,6 +6,7 @@ import GenericInput from "./GenericInput";
 import DoubleSlider from "./DoubleSlider";
 import SubmitButton from "./SubmitButton";
 import { useRouter } from "next/router";
+import clsx from "clsx";
 
 interface SearchFormProps {
   searchType: SearchType;
@@ -53,20 +54,41 @@ const SearchForm = ({
     };
   }, [router]);
 
-  if (isTransitioning) return <p>Loading...</p>;
+  if (isTransitioning)
+    return (
+      <p
+        className={clsx(
+          "w-full",
+          "py-2",
+          "text-center",
+          "rounded-full",
+          "font-Barlow",
+          "text-brandGray",
+          "box-content",
+          "bg-orange-300",
+          "-m-[2px]",
+          "border-2",
+          "border-brandGray",
+          "text-lg",
+          "sm:text-sm",
+          "md:text-base",
+          "lg:text-lg",
+          "xl:text-xl"
+        )}
+      >
+        Loading...
+      </p>
+    );
 
   switch (searchType) {
     case "professor":
-      return <ProfessorForm submitQuery={submitQuery}></ProfessorForm>;
+      return <ProfessorForm submitQuery={submitQuery} />;
     case "course":
       return (
-        <CourseForm
-          submitQuery={submitQuery}
-          showOrOnHover={showOrOnHover}
-        ></CourseForm>
+        <CourseForm submitQuery={submitQuery} showOrOnHover={showOrOnHover} />
       );
     default:
-      return <ScoreForm submitQuery={submitQuery}></ScoreForm>;
+      return <ScoreForm submitQuery={submitQuery} />;
   }
 };
 
