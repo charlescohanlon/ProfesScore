@@ -27,7 +27,7 @@ const SearchForm = ({
   }
 
   function handleAnimationTransition() {
-    setIsTransitioning((prev) => !prev);
+    setIsTransitioning(true);
   }
 
   function handleAnimationTransitionEnd() {
