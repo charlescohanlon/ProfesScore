@@ -36,12 +36,12 @@ const SearchForm = ({
 
   useEffect(() => {
     router.events.on("routeChangeStart", handleAnimationTransition);
-    router.events.on("routeChangeComplete", handleAnimationTransition);
+    router.events.on("routeChangeComplete", handleAnimationTransitionEnd);
     router.events.on("routeChangeError", handleAnimationTransitionEnd);
 
     return () => {
       router.events.off("routeChangeStart", handleAnimationTransition);
-      router.events.off("routeChangeComplete", handleAnimationTransition);
+      router.events.off("routeChangeComplete", handleAnimationTransitionEnd);
       router.events.off("routeChangeError", handleAnimationTransitionEnd);
     };
   }, [router]);
