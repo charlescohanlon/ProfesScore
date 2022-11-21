@@ -131,13 +131,13 @@ const DisplayContainer = ({
               }
             ></CourseGroup>
           )}
-          {isLoading && (
-            <div className="pb-3">
-              <Message>Loading...</Message>
-            </div>
-          )}
         </div>
       ))}
+      {isLoading && (
+        <div className="pb-3">
+          <Message>Loading...</Message>
+        </div>
+      )}
     </ResultScrollView>
   );
 };
