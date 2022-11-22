@@ -84,13 +84,6 @@ const DisplayContainer = ({
       </ResultScrollView>
     );
 
-  if (isLoading)
-    return (
-      <ResultScrollView>
-        <Message>Loading...</Message>
-      </ResultScrollView>
-    );
-
   if (searchResults?.length === 0) {
     return (
       <ResultScrollView>
@@ -140,6 +133,11 @@ const DisplayContainer = ({
           )}
         </div>
       ))}
+      {isLoading && (
+        <div className="pb-3">
+          <Message>Loading...</Message>
+        </div>
+      )}
     </ResultScrollView>
   );
 };
