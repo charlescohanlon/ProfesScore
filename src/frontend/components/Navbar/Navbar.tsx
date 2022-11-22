@@ -125,7 +125,7 @@ const Navbar = ({ initialStateQuery }: NavbarProps): JSX.Element => {
               ></SearchForm>
             </div>
           </div>
-          <NavbarLinks extraClasses="text-white"></NavbarLinks>
+          <NavbarLinks addtlClasses="text-white"></NavbarLinks>
         </div>
       </div>
     </>

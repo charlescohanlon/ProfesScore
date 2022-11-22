@@ -1,15 +1,15 @@
 import clsx from "clsx";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { InfoPopupContext } from "../../pages/_app";
 
 interface InfoPopupProps {
-  extraClasses?: string;
+  addtlClasses?: string;
   children: string | JSX.Element | Array<JSX.Element | string>;
   isUpsideDown?: boolean;
 }
 
 const InfoPopup = ({
-  extraClasses,
+  addtlClasses,
   children,
   isUpsideDown,
 }: InfoPopupProps): JSX.Element => {
@@ -25,7 +25,7 @@ const InfoPopup = ({
         "flex",
         "flex-col",
         "items-center",
-        extraClasses
+        addtlClasses
       )}
     >
       <div
@@ -48,7 +48,7 @@ const InfoPopup = ({
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          onClick={() => hide()}
+          onClick={hide}
           className={clsx(
             "absolute",
             "cursor-pointer",
