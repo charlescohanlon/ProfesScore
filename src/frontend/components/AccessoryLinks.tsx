@@ -2,10 +2,10 @@ import clsx from "clsx";
 import Link from "next/link";
 
 interface NavbarLinksProps {
-  extraClasses: string;
+  addtlClasses: string;
 }
 
-const NavbarLinks = ({ extraClasses }: NavbarLinksProps): JSX.Element => {
+const NavbarLinks = ({ addtlClasses }: NavbarLinksProps): JSX.Element => {
   const commonClasses = "px-1 xs:px-4 sm:px-2 xl:mx-4 hover:scale-105";
   return (
     <div
@@ -31,7 +31,7 @@ const NavbarLinks = ({ extraClasses }: NavbarLinksProps): JSX.Element => {
         "lg:right-2",
         "xl:text-xl",
         "xl:right-2",
-        extraClasses
+        addtlClasses
       )}
     >
       <Link href="/about">

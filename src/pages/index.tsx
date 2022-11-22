@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <main className="h-screen w-screen bg-white">
-        <NavbarLinks extraClasses="text-brandGray"></NavbarLinks>
+        <NavbarLinks addtlClasses="text-brandGray" />
         <div className={"w-full flex justify-center relative top-1/4 "}>
           <div
             className={
@@ -29,12 +29,15 @@ const Home: NextPage = () => {
             "lg:right-48 lg:bottom-24 "
           }
         >
-          <InfoPopup extraClasses="w-64 sm:w-72">
+          <InfoPopup addtlClasses="w-64 sm:w-72">
             See the number of &quot;A&quot; grades to all grades (the A&apos;s
             ratio) or passing grade ratio, quality rating, and overall score for
             a professor. Either department-wide when searching by professor or
             for a specific class when searching by course. See{" "}
-            <ContainerLink href="/about">about</ContainerLink> for more.
+            <ContainerLink href="/about" addtlClasses="break-normal">
+              about
+            </ContainerLink>{" "}
+            for more.
           </InfoPopup>
         </div>
       </main>

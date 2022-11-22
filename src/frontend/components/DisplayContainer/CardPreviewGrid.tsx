@@ -75,7 +75,7 @@ const CardPreviewGrid = ({
             "xl:top-11"
           )}
         >
-          <InfoPopup extraClasses="w-28 sm:w-36 text-center " isUpsideDown>
+          <InfoPopup addtlClasses="w-28 sm:w-36 text-center " isUpsideDown>
             Click to see the ratio for passing grades
           </InfoPopup>{" "}
         </div>
@@ -155,7 +155,7 @@ const CardPreviewGrid = ({
       {showInfo && collapseNumGrades && (
         <div className={clsx("absolute", "top-8")}>
           <InfoPopup
-            extraClasses={clsx("w-28", "sm:w-36", "text-center")}
+            addtlClasses={clsx("w-28", "sm:w-36", "text-center")}
             isUpsideDown
           >
             Click to see the total number of grades given
