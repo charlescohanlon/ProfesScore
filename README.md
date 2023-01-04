@@ -10,4 +10,4 @@ When you search by professor (or score), the data shown is department-wide. The 
 
 ![alt text](https://github.com/charlescohanlon/ProfesScore/blob/main/screenshots/2.png?raw=true)
 
-ProfesScore is built with Nextjs, Tailwindcss, and Mysql. It implements server-side rendering, infinite scroll, and advanced sql queries.
+ProfesScore is built with TypeScript, Nextjs, Tailwindcss, and Mysql. It implements server-side rendering, infinite scroll, and advanced sql queries.
